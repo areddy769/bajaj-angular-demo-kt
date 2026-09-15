@@ -1,0 +1,19 @@
+.user-page {
+  display: flex;
+  width: 100%;
+  min-height: 60vh;
+}
+
+.user-list {
+  width: 50%;
+}
+
+.user-actions {
+  width: 50%;
+  min-height: 80vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}

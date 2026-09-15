@@ -1,0 +1,107 @@
+.user-card {
+  width: 100%;
+  max-width: 500px;
+  padding: 24px;
+  box-sizing: border-box;
+
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: #e9ecef;
+
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card-header h2 {
+  margin: 0 0 5px;
+}
+
+.card-header p {
+  margin: 0;
+  color: #777;
+}
+
+.user-info {
+  padding: 20px 0;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.info-item span {
+  color: #777;
+}
+
+.card-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.card-actions button {
+  flex: 1;
+  padding: 11px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.edit-btn {
+  background: #eee;
+}
+
+.delete-btn {
+  background: #dc3545;
+  color: white;
+}
+
+
+
+.back-btn {
+  
+  top: 10px;
+  left: 20px;
+
+  width: auto;
+  padding: 8px 14px;
+
+  margin-bottom: 20px;
+
+  background: transparent;
+  color: #333;
+
+  border: 1px solid #ddd;
+  border-radius: 6px;
+
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
