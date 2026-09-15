@@ -1,0 +1,111 @@
+:host {
+  display: block;
+  padding: 30px;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: #1f2937;
+  font-size: 24px;
+}
+
+/* Form */
+
+form {
+  max-width: 650px;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+form div {
+  margin-bottom: 18px;
+}
+
+/* Labels */
+
+label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Inputs */
+
+input {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+input.ng-invalid.ng-touched {
+  border-color: #dc2626;
+}
+
+/* Validation messages */
+
+small {
+  display: block;
+  margin-top: 5px;
+  color: #dc2626;
+  font-size: 12px;
+}
+
+/* Error */
+
+.error {
+  margin-bottom: 15px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: #fee2e2;
+  color: #b91c1c;
+  font-size: 14px;
+}
+
+/* Submit button */
+
+button[type="submit"] {
+  padding: 11px 20px;
+  border: none;
+  border-radius: 6px;
+  background: #2563eb;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background: #1d4ed8;
+}
+
+button[type="submit"]:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.cancel-button{
+    margin-left: 10px;
+    padding: 11px 20px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: #9ca3af;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}

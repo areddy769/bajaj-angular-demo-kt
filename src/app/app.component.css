@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+}
+h1 {
+    margin: 0;
+    padding: 20px 30px;
+    background-color: #1f2937;
+    color: white;
+    font-size: 26px;
+}
+nav a {
+    text-decoration: none;
+    color: #2563eb;
+    font-weight: 600;
+    margin-right: 15px;
+}
+nav a :hover {
+    text-decoration: underline;
+}
+hr {
+    display: none;
+}

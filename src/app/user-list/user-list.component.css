@@ -1,0 +1,122 @@
+:host {
+  display: block;
+  padding: 30px;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #1f2937;
+  font-size: 24px;
+}
+
+/* Loading and error messages */
+
+div[ng-reflect-ng-if] {
+  margin-bottom: 15px;
+}
+
+input {
+  width: 300px;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+/* Table container */
+
+div[style*="overflow-y"] {
+  margin-top: 20px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow-x: auto;
+  overflow-y: auto !important;
+}
+
+/* Table */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border: none;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+th {
+  background: #1f2937;
+  color: white;
+  padding: 13px 12px;
+  text-align: left;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+tbody tr:hover {
+  background: #f9fafb;
+}
+
+/* Sort button */
+
+th button {
+  margin-left: 8px;
+  padding: 5px 9px;
+  border: none;
+  border-radius: 4px;
+  background: #374151;
+  color: white;
+  cursor: pointer;
+}
+
+th button:hover {
+  background: #4b5563;
+}
+
+/* Action buttons */
+
+td button {
+  padding: 7px 12px;
+  margin-right: 6px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+td button:first-child {
+  background: #2563eb;
+  color: white;
+}
+
+td button:first-child:hover {
+  background: #1d4ed8;
+}
+
+td button:last-child {
+  background: #dc2626;
+  color: white;
+}
+
+td button:last-child:hover {
+  background: #b91c1c;
+}

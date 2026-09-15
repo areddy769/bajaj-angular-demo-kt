@@ -1,0 +1,143 @@
+<h2>{{ isEditMode ? 'Edit User' : 'Add User' }}</h2>
+
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+  <div>
+    <label>First Name:</label>
+
+    <input
+      type="text"
+      formControlName="firstName">
+
+    <div *ngIf="
+      userForm.get('firstName')?.touched &&
+      userForm.get('firstName')?.invalid
+    ">
+      First name is required.
+    </div>
+  </div>
+
+  <br>
+
+  <div>
+    <label>Last Name:</label>
+
+    <input
+      type="text"
+      formControlName="lastName">
+
+    <div *ngIf="
+      userForm.get('lastName')?.touched &&
+      userForm.get('lastName')?.invalid
+    ">
+      Last name is required.
+    </div>
+  </div>
+
+  <br>
+
+  <div>
+    <label>Email:</label>
+
+    <input
+      type="email"
+      formControlName="email">
+
+    <div *ngIf="
+      userForm.get('email')?.touched &&
+      userForm.get('email')?.invalid
+    ">
+      <span *ngIf="userForm.get('email')?.errors?.['required']">
+        Email is required.
+      </span>
+
+      <span *ngIf="userForm.get('email')?.errors?.['email']">
+        Enter a valid email address.
+      </span>
+    </div>
+  </div>
+
+  <br>
+
+  <div>
+    <label>Mobile:</label>
+
+    <input
+      type="text"
+      formControlName="mobile">
+
+    <div *ngIf="
+      userForm.get('mobile')?.touched &&
+      userForm.get('mobile')?.invalid
+    ">
+      <span *ngIf="userForm.get('mobile')?.errors?.['required']">
+        Mobile is required.
+      </span>
+
+      <span *ngIf="userForm.get('mobile')?.errors?.['pattern']">
+        Mobile must contain exactly 10 digits.
+      </span>
+    </div>
+  </div>
+
+  <br>
+
+  <div>
+    <label>City:</label>
+
+    <input
+      type="text"
+      formControlName="city">
+
+    <div *ngIf="
+      userForm.get('city')?.touched &&
+      userForm.get('city')?.invalid
+    ">
+      City is required.
+    </div>
+  </div>
+
+  <br>
+
+  <div>
+    <label>Password:</label>
+
+    <input
+      type="password"
+      formControlName="password">
+
+    <div *ngIf="
+      userForm.get('password')?.touched &&
+      userForm.get('password')?.invalid
+    ">
+      <span *ngIf="userForm.get('password')?.errors?.['required']">
+        Password is required.
+      </span>
+
+      <span *ngIf="userForm.get('password')?.errors?.['minlength']">
+        Password must be at least 6 characters.
+      </span>
+    </div>
+  </div>
+
+  <br>
+
+  <button
+    type="submit"
+    [disabled]="loading">
+
+    {{ loading ? 'Saving...' : (isEditMode ? 'Update User' : 'Add User') }}
+
+  </button>
+  <button
+    type="button"
+    class="cancel-button"
+    routerLink="/users">Cancel</button>
+
+</form>
+
+<br>
+
+<div *ngIf="errorMessage">
+  {{ errorMessage }}
+</div>

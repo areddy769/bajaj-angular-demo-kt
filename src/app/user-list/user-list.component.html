@@ -1,0 +1,73 @@
+<h2>User List</h2>
+
+<div *ngIf="loading">
+  Loading users...
+</div>
+
+<div *ngIf="errorMessage">
+  {{ errorMessage }}
+</div>
+
+<div *ngIf="!loading && !errorMessage">
+
+  <div>
+    <label>Search: </label>
+
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      (input)="searchUsers()"
+      placeholder="Search users">
+  </div>
+
+  <br>
+
+  <div style="height: 400px; overflow-y: auto;">
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+
+          <th>
+            First Name
+            <button (click)="sortByFirstName()">
+              Sort
+            </button>
+          </th>
+
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>City</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let user of filteredUsers">
+
+          <td>{{ user.id }}</td>
+
+          <td>{{ user.firstName }}</td>
+
+          <td>{{ user.lastName }}</td>
+
+          <td>{{ user.email }}</td>
+
+          <td>{{ user.mobile }}</td>
+
+          <td>{{ user.city }}</td>
+
+          <td>
+            <button [routerLink]="['/users/edit', user.id]">Edit</button>
+            <button (click)="deleteUser(user.id!)">Delete</button>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
