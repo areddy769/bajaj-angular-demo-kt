@@ -1,0 +1,30 @@
+<h2>User List</h2>
+<button routerLink="/user-form">Add New User</button>
+
+<table border="1" style="margin-top: 10px; border-collapse: collapse;">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>DOB</th>
+      <th>City</th>
+      <th>Mobile</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let u of users">
+      <td>{{ u.firstName }}</td>
+      <td>{{ u.lastName }}</td>
+      <td>{{ u.dob }}</td>
+      <td>{{ u.city }}</td>
+      <td>{{ u.mobile }}</td>
+      <td>{{ u.email }}</td>
+      <td>
+        <button (click)="editUser(u.id)">Edit</button>
+        <button (click)="deleteUser(u.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
