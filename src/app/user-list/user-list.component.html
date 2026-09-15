@@ -1,0 +1,58 @@
+<div class="user-container">
+  
+  <div class="header">
+    <div>
+      <h2>User Directory</h2>
+      <p>Manage your system users and details</p>
+    </div>
+
+    <button class="btn-add" (click)="onAddUser()">
+      + Add New User
+    </button>
+  </div>
+
+  <input 
+    type="text" 
+    class="search-input"
+    placeholder="🔍  Search by name, email, or city..." 
+    [(ngModel)]="searchTerm" 
+    (input)="onSearch()" 
+  />
+
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>City</th>
+          <th>DOB</th>
+          <th>Mobile</th>
+          <th style="text-align: center;">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let user of filteredUsers">
+          <td class="user-name">{{ user.firstName }} {{ user.lastName }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.city || '-' }}</td>
+          <td>{{ user.dob || '-' }}</td>
+          <td>{{ user.mobile || '-' }}</td>
+          
+          <td class="actions">
+            <button class="btn-edit" (click)="onEditUser(user.id)">Edit</button>
+            <button class="btn-delete" (click)="onDeleteUser(user.id)">Delete</button>
+          </td>
+        </tr>
+
+        <tr *ngIf="filteredUsers.length === 0">
+          <td colspan="6" class="empty-row">
+            {{ searchTerm ? 'No users found matching your search.' : 'No users available.' }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
