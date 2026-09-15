@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AuthService } from './core/services/auth.service';
+import { SessionUser } from './core/models/user.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'bajaj-angular-demo-kt';
+  user$: Observable<SessionUser | null>;
+
+  constructor(private auth: AuthService) {
+    this.user$ = this.auth.currentUser$;
+  }
 }

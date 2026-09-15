@@ -1,0 +1,14 @@
+<h2>Dashboard</h2>
+
+<ng-container *ngIf="state$ | async as state">
+  <p *ngIf="state.loading">Loading dashboard…</p>
+
+  <app-error-message [message]="state.error" retryText="Retry" (retry)="load()"></app-error-message>
+
+  <div class="cards" *ngIf="state.summary as s">
+    <div class="card"><span class="num">{{ s.totalCustomers }}</span><span>Total Customers</span></div>
+    <div class="card green"><span class="num">{{ s.activeCustomers }}</span><span>Active Customers</span></div>
+    <div class="card red"><span class="num">{{ s.inactiveCustomers }}</span><span>Inactive Customers</span></div>
+    <div class="card blue"><span class="num">{{ s.totalUsers }}</span><span>Total Users</span></div>
+  </div>
+</ng-container>

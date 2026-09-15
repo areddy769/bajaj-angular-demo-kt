@@ -1,0 +1,38 @@
+<h2>Users <small>(ADMIN only)</small></h2>
+
+<div class="toolbar">
+  <input type="text" [formControl]="searchControl" placeholder="Search name or email…" />
+  <button type="button" routerLink="/users/new">+ Add User</button>
+</div>
+
+<p *ngIf="loading">Loading users…</p>
+<app-error-message [message]="error" retryText="Retry" (retry)="load(pagination.page)"></app-error-message>
+
+<table *ngIf="!loading && !error && users.length">
+  <thead>
+    <tr><th>Name</th><th>Email</th><th>Role</th><th>Status</th><th>Actions</th></tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let u of users">
+      <td>{{ u.name }}</td>
+      <td>{{ u.email }}</td>
+      <td><app-status-badge [status]="u.role"></app-status-badge></td>
+      <td><app-status-badge [status]="u.status"></app-status-badge></td>
+      <td class="actions">
+        <button type="button" class="link" (click)="edit(u.id)">Edit</button>
+        <button type="button" class="link" (click)="toggleStatus(u)">
+          {{ u.status === 'ACTIVE' ? 'Deactivate' : 'Activate' }}
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<app-empty-state *ngIf="!loading && !error && !users.length" title="No users found."></app-empty-state>
+
+<app-pagination
+  [page]="pagination.page"
+  [totalPages]="pagination.totalPages"
+  [totalItems]="pagination.totalItems"
+  (pageChange)="load($event)">
+</app-pagination>

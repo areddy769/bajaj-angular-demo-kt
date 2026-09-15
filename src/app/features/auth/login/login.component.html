@@ -1,0 +1,22 @@
+<div class="login-wrap">
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+    <h2>Sign in</h2>
+    <p class="muted">Use your demo account (see README for credentials).</p>
+
+    <label>Email
+      <input type="email" formControlName="email" placeholder="admin@example.com" />
+    </label>
+    <small class="err" *ngIf="email?.touched && email?.hasError('required')">Email is required.</small>
+    <small class="err" *ngIf="email?.touched && email?.hasError('email')">Enter a valid email.</small>
+
+    <label>Password
+      <input type="password" formControlName="password" placeholder="••••••••" />
+    </label>
+    <small class="err" *ngIf="password?.touched && password?.hasError('required')">Password is required.</small>
+    <small class="err" *ngIf="password?.touched && password?.hasError('minlength')">Minimum 6 characters.</small>
+
+    <app-error-message [message]="serverError"></app-error-message>
+
+    <button type="submit" [disabled]="loading">{{ loading ? 'Signing in…' : 'Login' }}</button>
+  </form>
+</div>

@@ -1,0 +1,7 @@
+.login-wrap { display: flex; justify-content: center; padding: 48px 16px; }
+.card { width: 360px; background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 24px; }
+.muted { color: #757575; font-size: 13px; }
+label { display: block; margin-top: 12px; font-weight: 600; }
+input { width: 100%; box-sizing: border-box; margin-top: 4px; }
+.err { color: #c62828; font-size: 12px; }
+button { width: 100%; margin-top: 16px; }

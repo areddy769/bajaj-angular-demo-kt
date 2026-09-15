@@ -1,0 +1,5 @@
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.card { background: #fff; border: 1px solid #e0e0e0; border-left: 4px solid #78909c;
+  border-radius: 6px; padding: 16px; display: flex; flex-direction: column; }
+.num { font-size: 28px; font-weight: 700; }
+.green { border-left-color: #2e7d32; } .red { border-left-color: #c62828; } .blue { border-left-color: #1565c0; }

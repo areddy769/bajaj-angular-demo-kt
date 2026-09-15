@@ -1,0 +1,67 @@
+<h2>Customers</h2>
+
+<div class="toolbar">
+  <button type="button" routerLink="/customers/new">+ Add Customer</button>
+</div>
+
+<form class="filters" [formGroup]="filterForm" (ngSubmit)="applyFilters()">
+  <input type="text" formControlName="search" placeholder="Search name, email, mobile…" />
+  <select formControlName="status">
+    <option value="">All statuses</option>
+    <option value="ACTIVE">Active</option>
+    <option value="INACTIVE">Inactive</option>
+  </select>
+  <select formControlName="customerType">
+    <option value="">All types</option>
+    <option value="INDIVIDUAL">Individual</option>
+    <option value="BUSINESS">Business</option>
+  </select>
+  <input type="text" formControlName="city" placeholder="City" />
+  <button type="submit">Filter</button>
+  <button type="button" class="secondary" (click)="clearFilters()">Clear</button>
+</form>
+
+<p *ngIf="loading">Loading customers…</p>
+<app-error-message [message]="error" retryText="Retry" (retry)="load(pagination.page)"></app-error-message>
+
+<table *ngIf="!loading && !error && customers.length">
+  <thead>
+    <tr>
+      <th><button class="sort" (click)="toggleSort('firstName')">Name ↕</button></th>
+      <th>Email</th>
+      <th>Mobile</th>
+      <th>City</th>
+      <th><button class="sort" (click)="toggleSort('status')">Status ↕</button></th>
+      <th><button class="sort" (click)="toggleSort('createdAt')">Created ↕</button></th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of customers">
+      <td>{{ c | fullName }}</td>
+      <td>{{ c.email }}</td>
+      <td>{{ c.mobile }}</td>
+      <td>{{ c.city }}</td>
+      <td><app-status-badge [status]="c.status"></app-status-badge></td>
+      <td>{{ c.createdAt | date: 'mediumDate' }}</td>
+      <td class="actions">
+        <button type="button" class="link" (click)="view(c.id)">View</button>
+        <button type="button" class="link" (click)="edit(c.id)">Edit</button>
+        <button type="button" class="link danger" *ngIf="auth.hasRole('ADMIN')" (click)="remove(c)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<app-empty-state
+  *ngIf="!loading && !error && !customers.length"
+  title="No customers found."
+  hint="Try a different search or add a new customer.">
+</app-empty-state>
+
+<app-pagination
+  [page]="pagination.page"
+  [totalPages]="pagination.totalPages"
+  [totalItems]="pagination.totalItems"
+  (pageChange)="load($event)">
+</app-pagination>

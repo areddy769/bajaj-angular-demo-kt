@@ -1,0 +1,3 @@
+.shell { display: flex; }
+.content { flex: 1; padding: 16px 20px; background: #fafafa; min-height: calc(100vh - 150px); }
+.content.public { min-height: calc(100vh - 110px); }
