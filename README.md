@@ -25,3 +25,20 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Backend (ready-to-run demo API)
+
+Freshers do **not** need to build or modify the backend — it is pre-built for you
+to practise real API integration from the Angular app.
+
+```bash
+cd backend
+cp .env.example .env     # Windows PowerShell: Copy-Item .env.example .env
+npx prisma migrate dev
+npm run seed
+npm run dev              # API at http://localhost:3000/api
+```
+
+Demo logins: `admin@example.com` / `Admin@123` (ADMIN),
+`user@example.com` / `User@123` (USER).
+Full endpoint docs, Postman collection and troubleshooting: see [backend/README.md](backend/README.md).
