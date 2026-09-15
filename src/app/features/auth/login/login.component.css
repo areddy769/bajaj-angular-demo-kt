@@ -1,7 +1,26 @@
-.login-wrap { display: flex; justify-content: center; padding: 48px 16px; }
-.card { width: 360px; background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 24px; }
-.muted { color: #757575; font-size: 13px; }
-label { display: block; margin-top: 12px; font-weight: 600; }
-input { width: 100%; box-sizing: border-box; margin-top: 4px; }
-.err { color: #c62828; font-size: 12px; }
-button { width: 100%; margin-top: 16px; }
+.login-scene { display: grid; grid-template-columns: 1fr 390px; gap: 0; align-items: stretch;
+  max-width: 960px; margin: 44px auto; padding: 0 20px; }
+.login-brand { color: #fff; border-radius: 20px 0 0 20px; padding: 44px 38px;
+  background: linear-gradient(140deg, oklch(0.36 0.14 264), oklch(0.3 0.12 300) 55%, oklch(0.42 0.13 205) 130%);
+  background-size: 220% 220%; animation: aurora 14s ease-in-out infinite alternate;
+  box-shadow: var(--shadow); display: flex; flex-direction: column; justify-content: center; }
+@keyframes aurora { to { background-position: 90% 100%; } }
+.login-brand h1 { font-size: 34px; letter-spacing: -0.025em; margin: 16px 0 10px; }
+.login-brand p { margin: 0; opacity: 0.88; font-size: 14.5px; max-width: 36ch; }
+.proof { list-style: none; display: flex; gap: 8px; padding: 0; margin: 22px 0 0; }
+.proof li { font-size: 12px; padding: 6px 12px; border-radius: 20px;
+  background: oklch(1 0 0 / 0.14); border: 1px solid oklch(1 0 0 / 0.25); }
+.proof strong { font-weight: 800; }
+.mark { display: inline-flex; filter: drop-shadow(0 0 14px oklch(1 0 0 / 0.4)); }
+.card { background: oklch(0.25 0.045 266 / 0.92); border: 1px solid var(--line);
+  border-radius: 0 20px 20px 0; padding: 30px 28px; box-shadow: var(--shadow); backdrop-filter: blur(8px); }
+label { display: block; margin-top: 14px; font-weight: 600; font-size: 13px; }
+input { width: 100%; box-sizing: border-box; margin-top: 5px; }
+.err { color: var(--danger); font-size: 12px; }
+button { width: 100%; margin-top: 18px; padding: 11px; font-size: 15px; }
+.hint { color: var(--ink-2); font-size: 12px; margin: 14px 0 0; }
+@media (max-width: 820px) {
+  .login-scene { grid-template-columns: 1fr; }
+  .login-brand { border-radius: 20px 20px 0 0; padding: 30px 26px; }
+  .card { border-radius: 0 0 20px 20px; }
+}

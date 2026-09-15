@@ -1,22 +1,38 @@
-<div class="login-wrap">
+<div class="login-scene">
+  <div class="login-brand">
+    <span class="mark" aria-hidden="true">
+      <svg width="44" height="44" viewBox="0 0 26 26" fill="none">
+        <rect x="1" y="1" width="24" height="24" rx="7" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M7 18V8h6a4 4 0 0 1 0 8H7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+    <h1>Customer Portal</h1>
+    <p>One login. Every customer, every user, every count — live from the demo API.</p>
+    <ul class="proof">
+      <li><strong>JWT</strong> session</li>
+      <li><strong>Role</strong> enforced</li>
+      <li><strong>Real</strong> database</li>
+    </ul>
+  </div>
+
   <form class="card" [formGroup]="form" (ngSubmit)="submit()" novalidate>
     <h2>Sign in</h2>
-    <p class="muted">Use your demo account (see README for credentials).</p>
 
     <label>Email
-      <input type="email" formControlName="email" placeholder="admin@example.com" />
+      <input type="email" formControlName="email" placeholder="admin@example.com" autocomplete="username" />
     </label>
     <small class="err" *ngIf="email?.touched && email?.hasError('required')">Email is required.</small>
     <small class="err" *ngIf="email?.touched && email?.hasError('email')">Enter a valid email.</small>
 
     <label>Password
-      <input type="password" formControlName="password" placeholder="••••••••" />
+      <input type="password" formControlName="password" placeholder="••••••••" autocomplete="current-password" />
     </label>
     <small class="err" *ngIf="password?.touched && password?.hasError('required')">Password is required.</small>
     <small class="err" *ngIf="password?.touched && password?.hasError('minlength')">Minimum 6 characters.</small>
 
     <app-error-message [message]="serverError"></app-error-message>
 
-    <button type="submit" [disabled]="loading">{{ loading ? 'Signing in…' : 'Login' }}</button>
+    <button type="submit" [disabled]="loading">{{ loading ? 'Signing in…' : 'Login →' }}</button>
+    <p class="hint">Demo: admin@example.com / Admin@123 · user@example.com / User@123</p>
   </form>
 </div>

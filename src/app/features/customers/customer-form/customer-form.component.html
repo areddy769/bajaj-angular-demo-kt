@@ -1,61 +1,64 @@
 <h2>{{ isEdit ? 'Edit Customer' : 'Add Customer' }}</h2>
+<p class="page-sub">{{ isEdit ? 'Update the record below.' : 'All required fields are marked *.' }}</p>
 
-<form [formGroup]="form" (ngSubmit)="submit()" novalidate class="grid">
-  <label>First Name *
-    <input formControlName="firstName" />
-    <small *ngIf="field('firstName')?.touched && field('firstName')?.invalid">Min 2 characters.</small>
-  </label>
-  <label>Last Name *
-    <input formControlName="lastName" />
-    <small *ngIf="field('lastName')?.touched && field('lastName')?.invalid">Required.</small>
-  </label>
-  <label>Email *
-    <input formControlName="email" />
-    <small *ngIf="field('email')?.touched && field('email')?.invalid">Valid email required.</small>
-  </label>
-  <label>Mobile *
-    <input formControlName="mobile" placeholder="10-digit Indian mobile" />
-    <small *ngIf="field('mobile')?.touched && field('mobile')?.invalid">Enter a valid Indian mobile number.</small>
-  </label>
-  <label>Date of Birth
-    <input type="date" formControlName="dateOfBirth" />
-  </label>
-  <label>Gender
-    <select formControlName="gender">
-      <option value="MALE">Male</option>
-      <option value="FEMALE">Female</option>
-      <option value="OTHER">Other</option>
-    </select>
-  </label>
-  <label>City *
-    <input formControlName="city" />
-    <small *ngIf="field('city')?.touched && field('city')?.invalid">Required.</small>
-  </label>
-  <label>State *
-    <input formControlName="state" />
-    <small *ngIf="field('state')?.touched && field('state')?.invalid">Required.</small>
-  </label>
-  <label>Pincode *
-    <input formControlName="pincode" placeholder="6 digits" />
-    <small *ngIf="field('pincode')?.touched && field('pincode')?.invalid">6-digit pincode required.</small>
-  </label>
-  <label>Customer Type
-    <select formControlName="customerType">
-      <option value="INDIVIDUAL">Individual</option>
-      <option value="BUSINESS">Business</option>
-    </select>
-  </label>
-  <label>Status
-    <select formControlName="status">
-      <option value="ACTIVE">Active</option>
-      <option value="INACTIVE">Inactive</option>
-    </select>
-  </label>
+<form [formGroup]="form" (ngSubmit)="submit()" novalidate class="panel">
+  <div class="grid">
+    <label>First Name *
+      <input formControlName="firstName" />
+      <small *ngIf="field('firstName')?.touched && field('firstName')?.invalid">Min 2 characters.</small>
+    </label>
+    <label>Last Name *
+      <input formControlName="lastName" />
+      <small *ngIf="field('lastName')?.touched && field('lastName')?.invalid">Required.</small>
+    </label>
+    <label>Email *
+      <input formControlName="email" />
+      <small *ngIf="field('email')?.touched && field('email')?.invalid">Valid email required.</small>
+    </label>
+    <label>Mobile *
+      <input formControlName="mobile" placeholder="10-digit Indian mobile" />
+      <small *ngIf="field('mobile')?.touched && field('mobile')?.invalid">Enter a valid Indian mobile number.</small>
+    </label>
+    <label>Date of Birth
+      <input type="date" formControlName="dateOfBirth" />
+    </label>
+    <label>Gender
+      <select formControlName="gender">
+        <option value="MALE">Male</option>
+        <option value="FEMALE">Female</option>
+        <option value="OTHER">Other</option>
+      </select>
+    </label>
+    <label>City *
+      <input formControlName="city" />
+      <small *ngIf="field('city')?.touched && field('city')?.invalid">Required.</small>
+    </label>
+    <label>State *
+      <input formControlName="state" />
+      <small *ngIf="field('state')?.touched && field('state')?.invalid">Required.</small>
+    </label>
+    <label>Pincode *
+      <input formControlName="pincode" placeholder="6 digits" />
+      <small *ngIf="field('pincode')?.touched && field('pincode')?.invalid">6-digit pincode required.</small>
+    </label>
+    <label>Customer Type
+      <select formControlName="customerType">
+        <option value="INDIVIDUAL">Individual</option>
+        <option value="BUSINESS">Business</option>
+      </select>
+    </label>
+    <label>Status
+      <select formControlName="status">
+        <option value="ACTIVE">Active</option>
+        <option value="INACTIVE">Inactive</option>
+      </select>
+    </label>
+  </div>
+
+  <app-error-message [message]="serverError"></app-error-message>
+
+  <div class="actions">
+    <button type="button" class="secondary" (click)="cancel()">Cancel</button>
+    <button type="submit" [disabled]="saving">{{ saving ? 'Saving…' : (isEdit ? 'Update' : 'Create') }}</button>
+  </div>
 </form>
-
-<app-error-message [message]="serverError"></app-error-message>
-
-<div class="actions">
-  <button type="button" class="secondary" (click)="cancel()">Cancel</button>
-  <button type="button" (click)="submit()" [disabled]="saving">{{ saving ? 'Saving…' : (isEdit ? 'Update' : 'Create') }}</button>
-</div>

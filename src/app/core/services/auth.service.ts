@@ -5,8 +5,8 @@ import { environment } from '../../../environments/environment';
 import { ApiSuccess } from '../models/api-response.model';
 import { LoginResponse, SessionUser, UserRole } from '../models/user.model';
 
-const TOKEN_KEY = 'bajaj_demo_token';
-const USER_KEY = 'bajaj_demo_user';
+const TOKEN_KEY = 'demo_token';
+const USER_KEY = 'demo_user';
 
 // Single source of truth for "who is logged in".
 // Components read currentUser$ with the async pipe — no manual subscribe/unsubscribe.

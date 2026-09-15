@@ -1,3 +1,8 @@
-.shell { display: flex; }
-.content { flex: 1; padding: 16px 20px; background: #fafafa; min-height: calc(100vh - 150px); }
-.content.public { min-height: calc(100vh - 110px); }
+.shell { display: flex; align-items: stretch; }
+.content { flex: 1; padding: 22px 26px 36px; min-width: 0; min-height: calc(100vh - 100px);
+  animation: rise-in 220ms ease-out; }
+.content.public { min-height: calc(100vh - 100px); display: block; }
+@media (max-width: 760px) {
+  .shell { flex-direction: column; }
+  .content { padding: 14px; }
+}

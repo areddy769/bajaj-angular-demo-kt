@@ -1,35 +1,38 @@
 <h2>{{ isEdit ? 'Edit User' : 'Add User' }}</h2>
+<p class="page-sub">{{ isEdit ? 'Update the account below.' : 'New accounts start active unless changed.' }}</p>
 
-<form [formGroup]="form" (ngSubmit)="submit()" novalidate class="grid">
-  <label>Name *
-    <input formControlName="name" />
-    <small *ngIf="field('name')?.touched && field('name')?.invalid">Min 2 characters.</small>
-  </label>
-  <label>Email *
-    <input formControlName="email" />
-    <small *ngIf="field('email')?.touched && field('email')?.invalid">Valid email required.</small>
-  </label>
-  <label>Password {{ isEdit ? '(leave blank to keep current)' : '*' }}
-    <input type="password" formControlName="password" />
-    <small *ngIf="field('password')?.touched && field('password')?.invalid">Min 6 characters.</small>
-  </label>
-  <label>Role
-    <select formControlName="role">
-      <option value="USER">User</option>
-      <option value="ADMIN">Admin</option>
-    </select>
-  </label>
-  <label>Status
-    <select formControlName="status">
-      <option value="ACTIVE">Active</option>
-      <option value="INACTIVE">Inactive</option>
-    </select>
-  </label>
+<form [formGroup]="form" (ngSubmit)="submit()" novalidate class="panel">
+  <div class="grid">
+    <label>Name *
+      <input formControlName="name" />
+      <small *ngIf="field('name')?.touched && field('name')?.invalid">Min 2 characters.</small>
+    </label>
+    <label>Email *
+      <input formControlName="email" />
+      <small *ngIf="field('email')?.touched && field('email')?.invalid">Valid email required.</small>
+    </label>
+    <label>Password {{ isEdit ? '(leave blank to keep current)' : '*' }}
+      <input type="password" formControlName="password" autocomplete="new-password" />
+      <small *ngIf="field('password')?.touched && field('password')?.invalid">Min 6 characters.</small>
+    </label>
+    <label>Role
+      <select formControlName="role">
+        <option value="USER">User</option>
+        <option value="ADMIN">Admin</option>
+      </select>
+    </label>
+    <label>Status
+      <select formControlName="status">
+        <option value="ACTIVE">Active</option>
+        <option value="INACTIVE">Inactive</option>
+      </select>
+    </label>
+  </div>
+
+  <app-error-message [message]="serverError"></app-error-message>
+
+  <div class="actions">
+    <button type="button" class="secondary" (click)="cancel()">Cancel</button>
+    <button type="submit" [disabled]="saving">{{ saving ? 'Saving…' : (isEdit ? 'Update' : 'Create') }}</button>
+  </div>
 </form>
-
-<app-error-message [message]="serverError"></app-error-message>
-
-<div class="actions">
-  <button type="button" class="secondary" (click)="cancel()">Cancel</button>
-  <button type="button" (click)="submit()" [disabled]="saving">{{ saving ? 'Saving…' : (isEdit ? 'Update' : 'Create') }}</button>
-</div>

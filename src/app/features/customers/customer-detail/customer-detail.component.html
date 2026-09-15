@@ -3,19 +3,26 @@
   <app-error-message [message]="state.error"></app-error-message>
 
   <div *ngIf="state.customer as c" class="detail">
-    <h2>{{ c | fullName }}</h2>
+    <div class="detail-head">
+      <div>
+        <h2>{{ c | fullName }}</h2>
+        <p class="page-sub">Customer #{{ c.id }} · {{ c.customerType | titlecase }}</p>
+      </div>
+      <app-status-badge [status]="c.status"></app-status-badge>
+    </div>
     <dl>
       <div><dt>Email</dt><dd>{{ c.email }}</dd></div>
       <div><dt>Mobile</dt><dd>{{ c.mobile }}</dd></div>
       <div><dt>Date of Birth</dt><dd>{{ c.dateOfBirth ? (c.dateOfBirth | date: 'mediumDate') : '—' }}</dd></div>
-      <div><dt>Gender</dt><dd>{{ c.gender }}</dd></div>
+      <div><dt>Gender</dt><dd>{{ c.gender | titlecase }}</dd></div>
       <div><dt>Address</dt><dd>{{ c.city }}, {{ c.state }} — {{ c.pincode }}</dd></div>
-      <div><dt>Customer Type</dt><dd>{{ c.customerType }}</dd></div>
-      <div><dt>Status</dt><dd><app-status-badge [status]="c.status"></app-status-badge></dd></div>
+      <div><dt>Customer Type</dt><dd>{{ c.customerType | titlecase }}</dd></div>
       <div><dt>Created</dt><dd>{{ c.createdAt | date: 'medium' }}</dd></div>
       <div><dt>Updated</dt><dd>{{ c.updatedAt | date: 'medium' }}</dd></div>
     </dl>
-    <button type="button" class="secondary" (click)="back()">Back to list</button>
-    <button type="button" (click)="edit(c.id)">Edit</button>
+    <div class="row">
+      <button type="button" class="secondary" (click)="back()">Back to list</button>
+      <button type="button" (click)="edit(c.id)">Edit</button>
+    </div>
   </div>
 </ng-container>

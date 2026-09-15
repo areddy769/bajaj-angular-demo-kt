@@ -98,6 +98,11 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     this.load(1);
   }
 
+  /** Whether a column is the active sort (template draws a CSS triangle). */
+  isSorted(field: string): boolean {
+    return this.sortBy === field;
+  }
+
   view(id: number): void {
     void this.router.navigate(['/customers', id]);
   }

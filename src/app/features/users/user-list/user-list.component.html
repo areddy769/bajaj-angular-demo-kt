@@ -1,20 +1,24 @@
-<h2>Users <small>(ADMIN only)</small></h2>
+<h2>Users</h2>
+<p class="page-sub">ADMIN only — accounts, roles, and activation. Passwords are never shown.</p>
 
 <div class="toolbar">
-  <input type="text" [formControl]="searchControl" placeholder="Search name or email…" />
+  <input type="search" [formControl]="searchControl" placeholder="Search name or email…" aria-label="Search users" />
   <button type="button" routerLink="/users/new">+ Add User</button>
 </div>
 
-<p *ngIf="loading">Loading users…</p>
 <app-error-message [message]="error" retryText="Retry" (retry)="load(pagination.page)"></app-error-message>
 
-<table *ngIf="!loading && !error && users.length">
+<div class="table-wrap" *ngIf="loading">
+  <div class="skeleton sk-row" *ngFor="let i of [1,2,3,4,5]"></div>
+</div>
+
+<table class="data-table" *ngIf="!loading && !error && users.length">
   <thead>
     <tr><th>Name</th><th>Email</th><th>Role</th><th>Status</th><th>Actions</th></tr>
   </thead>
   <tbody>
     <tr *ngFor="let u of users">
-      <td>{{ u.name }}</td>
+      <td><strong>{{ u.name }}</strong></td>
       <td>{{ u.email }}</td>
       <td><app-status-badge [status]="u.role"></app-status-badge></td>
       <td><app-status-badge [status]="u.status"></app-status-badge></td>

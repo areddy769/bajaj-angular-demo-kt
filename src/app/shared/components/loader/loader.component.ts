@@ -9,10 +9,13 @@ import { LoadingService } from '../../../core/services/loading.service';
     </div>
   `,
   styles: [`
-    .overlay { position: fixed; inset: 0; background: rgba(255,255,255,.6);
-      display: flex; align-items: center; justify-content: center; z-index: 1000; }
-    .spinner { width: 44px; height: 44px; border-radius: 50%;
-      border: 4px solid #cfd8dc; border-top-color: #1976d2; animation: spin 0.8s linear infinite; }
+    .overlay { position: fixed; inset: 0; background: oklch(0.16 0.03 266 / 0.6);
+      backdrop-filter: blur(2px); display: flex; align-items: center;
+      justify-content: center; z-index: 1000; }
+    .spinner { width: 48px; height: 48px; border-radius: 50%;
+      border: 4px solid oklch(0.4 0.07 266); border-top-color: var(--cyan);
+      box-shadow: 0 0 24px oklch(0.7 0.14 198 / 0.5);
+      animation: spin 0.8s cubic-bezier(0.2, 0.7, 0.3, 1) infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
   `]
 })

@@ -1,14 +1,40 @@
 <h2>Dashboard</h2>
+<p class="page-sub">Live counts from the demo API — nothing here is hard-coded.</p>
 
 <ng-container *ngIf="state$ | async as state">
-  <p *ngIf="state.loading">Loading dashboard…</p>
+  <div class="stats" *ngIf="state.loading" aria-label="Loading dashboard">
+    <div class="stat"><div class="skeleton sk-num"></div><div class="skeleton sk-label"></div></div>
+    <div class="stat"><div class="skeleton sk-num"></div><div class="skeleton sk-label"></div></div>
+    <div class="stat"><div class="skeleton sk-num"></div><div class="skeleton sk-label"></div></div>
+    <div class="stat"><div class="skeleton sk-num"></div><div class="skeleton sk-label"></div></div>
+  </div>
 
   <app-error-message [message]="state.error" retryText="Retry" (retry)="load()"></app-error-message>
 
-  <div class="cards" *ngIf="state.summary as s">
-    <div class="card"><span class="num">{{ s.totalCustomers }}</span><span>Total Customers</span></div>
-    <div class="card green"><span class="num">{{ s.activeCustomers }}</span><span>Active Customers</span></div>
-    <div class="card red"><span class="num">{{ s.inactiveCustomers }}</span><span>Inactive Customers</span></div>
-    <div class="card blue"><span class="num">{{ s.totalUsers }}</span><span>Total Users</span></div>
+  <div class="stats" *ngIf="state.summary as s">
+    <a class="stat" routerLink="/customers">
+      <span class="kicker total"></span>
+      <span class="num">{{ s.totalCustomers }}</span>
+      <span class="label">Total customers</span>
+      <span class="go">View list →</span>
+    </a>
+    <a class="stat" routerLink="/customers">
+      <span class="kicker active"></span>
+      <span class="num ok">{{ s.activeCustomers }}</span>
+      <span class="label">Active customers</span>
+      <span class="go">View list →</span>
+    </a>
+    <div class="stat">
+      <span class="kicker idle"></span>
+      <span class="num bad">{{ s.inactiveCustomers }}</span>
+      <span class="label">Inactive customers</span>
+      <span class="go muted">Needs attention</span>
+    </div>
+    <a class="stat" routerLink="/users">
+      <span class="kicker users"></span>
+      <span class="num accent">{{ s.totalUsers }}</span>
+      <span class="label">Total users</span>
+      <span class="go">Manage →</span>
+    </a>
   </div>
 </ng-container>

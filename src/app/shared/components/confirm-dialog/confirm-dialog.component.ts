@@ -6,7 +6,7 @@ import { ConfirmDialogService, ConfirmRequest } from '../../../core/services/con
   selector: 'app-confirm-dialog',
   template: `
     <div class="backdrop" *ngIf="request">
-      <div class="dialog" role="alertdialog">
+      <div class="dialog" role="alertdialog" aria-modal="true">
         <h3>{{ request.title }}</h3>
         <p>{{ request.message }}</p>
         <div class="actions">
@@ -17,10 +17,15 @@ import { ConfirmDialogService, ConfirmRequest } from '../../../core/services/con
     </div>
   `,
   styles: [`
-    .backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.45);
-      display: flex; align-items: center; justify-content: center; z-index: 1001; }
-    .dialog { background: #fff; border-radius: 8px; padding: 20px 24px; width: 360px; }
-    .actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+    .backdrop { position: fixed; inset: 0; background: oklch(0.14 0.03 266 / 0.7);
+      backdrop-filter: blur(3px); display: flex; align-items: center;
+      justify-content: center; z-index: 1001; padding: 16px; }
+    .dialog { background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+      padding: 24px; width: 390px; max-width: 100%; box-shadow: var(--shadow);
+      animation: rise-in 200ms ease-out; }
+    .dialog h3 { margin: 0 0 6px; }
+    .dialog p { margin: 0; color: var(--ink-2); }
+    .actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 20px; }
   `]
 })
 export class ConfirmDialogComponent implements OnInit, OnDestroy {

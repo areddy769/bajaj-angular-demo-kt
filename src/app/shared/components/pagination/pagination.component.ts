@@ -4,13 +4,21 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   selector: 'app-pagination',
   template: `
     <div class="pager" *ngIf="totalPages > 1">
-      <button type="button" [disabled]="page <= 1" (click)="go(page - 1)">‹ Prev</button>
+      <button type="button" class="secondary" [disabled]="page <= 1" (click)="go(page - 1)" aria-label="Previous page">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3L5 8l5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Prev
+      </button>
       <span>Page {{ page }} of {{ totalPages }} ({{ totalItems }} records)</span>
-      <button type="button" [disabled]="page >= totalPages" (click)="go(page + 1)">Next ›</button>
+      <button type="button" class="secondary" [disabled]="page >= totalPages" (click)="go(page + 1)" aria-label="Next page">
+        Next
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
     </div>
   `,
   styles: [`
-    .pager { display: flex; gap: 12px; align-items: center; justify-content: center; margin: 16px 0; }
+    .pager { display: flex; gap: 12px; align-items: center; justify-content: center;
+      margin: 18px 0 4px; color: var(--ink-2); }
+    .pager button { display: inline-flex; align-items: center; gap: 6px; }
     button:disabled { opacity: .4; cursor: not-allowed; }
   `]
 })

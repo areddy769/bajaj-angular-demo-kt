@@ -1,5 +1,22 @@
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
-.card { background: #fff; border: 1px solid #e0e0e0; border-left: 4px solid #78909c;
-  border-radius: 6px; padding: 16px; display: flex; flex-direction: column; }
-.num { font-size: 28px; font-weight: 700; }
-.green { border-left-color: #2e7d32; } .red { border-left-color: #c62828; } .blue { border-left-color: #1565c0; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; }
+.stat { position: relative; overflow: hidden; background: oklch(0.25 0.045 266 / 0.9);
+  border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 18px 16px;
+  display: flex; flex-direction: column; gap: 2px; box-shadow: var(--shadow);
+  text-decoration: none; color: inherit;
+  transition: transform 170ms ease-out, box-shadow 170ms ease-out, border-color 170ms ease-out; }
+.kicker { position: absolute; inset: 0 0 auto 0; height: 3px; }
+.kicker.total { background: var(--grad); }
+.kicker.active { background: linear-gradient(90deg, var(--success), var(--cyan)); }
+.kicker.idle { background: linear-gradient(90deg, var(--danger), oklch(0.65 0.15 60)); }
+.kicker.users { background: linear-gradient(90deg, oklch(0.72 0.13 300), var(--brand)); }
+a.stat:hover { transform: translateY(-3px); border-color: oklch(0.62 0.17 258 / 0.5);
+  box-shadow: var(--shadow), 0 10px 30px -10px oklch(0.62 0.17 258 / 0.45); }
+.num { font-size: 38px; font-weight: 800; letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums; text-shadow: 0 0 26px oklch(0.62 0.17 258 / 0.35); }
+.num.ok { color: var(--success); text-shadow: 0 0 26px oklch(0.78 0.15 152 / 0.4); }
+.num.bad { color: var(--danger); text-shadow: 0 0 26px oklch(0.7 0.17 24 / 0.4); }
+.num.accent { color: var(--cyan); text-shadow: 0 0 26px oklch(0.8 0.12 198 / 0.45); }
+.label { color: var(--ink-2); font-size: 13px; }
+.go { margin-top: 12px; font-size: 13px; font-weight: 700; color: var(--cyan); }
+.go.muted { color: var(--ink-2); font-weight: 400; }
+.sk-num { height: 44px; width: 80px; } .sk-label { height: 14px; width: 60%; margin-top: 8px; }

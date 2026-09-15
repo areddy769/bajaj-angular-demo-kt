@@ -43,7 +43,7 @@ describe('AuthService', () => {
   });
 
   it('clears state on logout', () => {
-    localStorage.setItem('bajaj_demo_token', 'x');
+    localStorage.setItem('demo_token', 'x');
     service.logout();
     expect(service.getToken()).toBeNull();
     expect(service.isLoggedIn()).toBe(false);

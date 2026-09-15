@@ -1,9 +1,9 @@
 .panel { background: oklch(0.25 0.045 266 / 0.92); border: 1px solid var(--line);
-  border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); max-width: 880px; }
+  border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); max-width: 740px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
 label { display: block; font-weight: 600; font-size: 13px; color: var(--ink-2); }
 label:focus-within { color: var(--cyan); }
 input, select { width: 100%; box-sizing: border-box; margin-top: 5px; }
-input.ng-touched.ng-invalid, select.ng-touched.ng-invalid { border-color: var(--danger); }
+input.ng-touched.ng-invalid { border-color: var(--danger); }
 small { color: var(--danger); font-size: 12px; font-weight: 400; }
 .actions { display: flex; gap: 8px; margin-top: 18px; }

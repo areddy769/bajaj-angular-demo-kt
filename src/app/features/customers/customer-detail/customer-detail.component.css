@@ -1,5 +1,11 @@
-.detail dl { display: grid; grid-template-columns: 140px 1fr; gap: 6px 12px; background: #fff;
-  border: 1px solid #e0e0e0; border-radius: 6px; padding: 16px; max-width: 560px; }
-.detail dt { font-weight: 700; color: #455a64; }
-.detail dd { margin: 0; }
-.detail button { margin: 12px 8px 0 0; }
+.detail { max-width: 660px; animation: rise-in 220ms ease-out; }
+.detail-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.detail dl { display: grid; grid-template-columns: 150px 1fr; gap: 0;
+  background: oklch(0.25 0.045 266 / 0.9); border: 1px solid var(--line);
+  border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); margin: 14px 0 0; }
+.detail dl > div { display: contents; }
+.detail dt { font-weight: 600; color: var(--ink-2); font-size: 13px; padding: 11px 16px;
+  background: oklch(0.28 0.055 266 / 0.7); }
+.detail dd { margin: 0; padding: 11px 16px; color: oklch(0.9 0.014 255); }
+.detail dl > div + div dt, .detail dl > div + div dd { border-top: 1px solid oklch(0.34 0.05 266); }
+.row { display: flex; gap: 8px; margin-top: 16px; }

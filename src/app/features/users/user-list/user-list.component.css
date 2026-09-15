@@ -1,0 +1,10 @@
+.toolbar { display: flex; gap: 8px; margin: 14px 0; }
+.toolbar input[type="search"] { flex: 1 1 240px; max-width: 340px; }
+.table-wrap { display: flex; flex-direction: column; gap: 8px; }
+.sk-row { height: 46px; }
+.actions { white-space: nowrap; }
+.link { background: none; border: none; box-shadow: none; color: var(--cyan); cursor: pointer;
+  padding: 0 10px 0 0; font-weight: 650; }
+.link:hover { filter: brightness(1.2); transform: none; }
+td strong { font-weight: 650; }
+td { color: oklch(0.88 0.015 255); }
