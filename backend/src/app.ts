@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import './types/express'; // Load req.user typing (ts-node compiles per-file, so import it explicitly)
 import { env } from './config/env';
 import authRoutes from './routes/auth.routes';
 import customerRoutes from './routes/customer.routes';
