@@ -1,0 +1,60 @@
+// Prisma schema for Bajaj Angular Fresher Demo API
+// SQLite runs fully locally — no Docker / server DB needed.
+//
+// NOTE (fresher-friendly): SQLite does not support native ENUM types in
+// Prisma, so role/status/gender/type are stored as Strings and validated
+// with Zod (see src/validators/). Allowed values are documented here:
+//
+//   User.role:          ADMIN | USER
+//   User.status:        ACTIVE | INACTIVE
+//   Customer.gender:    MALE | FEMALE | OTHER
+//   Customer.customerType: INDIVIDUAL | BUSINESS
+//   Customer.status:    ACTIVE | INACTIVE
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         String   @default("USER")
+  status       String   @default("ACTIVE")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([email])
+  @@index([role])
+  @@index([status])
+}
+
+model Customer {
+  id           Int       @id @default(autoincrement())
+  firstName    String
+  lastName     String
+  email        String    @unique
+  mobile       String
+  dateOfBirth  DateTime?
+  gender       String    @default("OTHER")
+  city         String
+  state        String
+  pincode      String
+  customerType String    @default("INDIVIDUAL")
+  status       String    @default("ACTIVE")
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([status])
+  @@index([city])
+  @@index([customerType])
+  @@index([firstName])
+  @@index([lastName])
+  @@index([email])
+}
