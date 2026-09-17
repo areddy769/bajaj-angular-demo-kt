@@ -1,0 +1,61 @@
+.top-header {
+  height: 64px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.menu-button {
+  border: none;
+  background: transparent;
+
+  font-size: 24px;
+  cursor: pointer;
+
+  padding: 6px 10px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-name {
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.logout-button {
+  border: none;
+  background: #dc2626;
+  color: white;
+
+  padding: 9px 16px;
+  border-radius: 6px;
+
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background: #b91c1c;
+}

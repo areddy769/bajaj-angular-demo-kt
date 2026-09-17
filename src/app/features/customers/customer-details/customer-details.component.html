@@ -1,0 +1,168 @@
+<div class="details-container">
+
+  <div class="page-header">
+
+    <div>
+      <h1>Customer Details</h1>
+      <p>View complete customer information</p>
+    </div>
+
+    <button type="button" (click)="goBack()">
+      ← Back
+    </button>
+
+  </div>
+
+
+  <!-- LOADING -->
+  <div *ngIf="loading" class="loading">
+    Loading customer details...
+  </div>
+
+
+  <!-- ERROR -->
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+
+
+  <!-- CUSTOMER DETAILS -->
+  <div *ngIf="!loading && customer" class="details-card">
+
+    <!-- CUSTOMER NAME -->
+    <div class="customer-heading">
+
+      <div class="avatar">
+        {{ customer.firstName.charAt(0) }}
+      </div>
+
+      <div>
+        <h2>
+          {{ customer.firstName }}
+          {{ customer.lastName }}
+        </h2>
+
+        <span
+          [class.active]="customer.status === 'ACTIVE'"
+          [class.inactive]="customer.status !== 'ACTIVE'">
+
+          {{ customer.status }}
+
+        </span>
+      </div>
+
+    </div>
+
+
+    <!-- INFORMATION -->
+    <div class="details-grid">
+
+      <div class="detail-item">
+        <label>Customer ID</label>
+        <p>{{ customer.id }}</p>
+      </div>
+
+      <div class="detail-item">
+        <label>First Name</label>
+        <p>{{ customer.firstName }}</p>
+      </div>
+
+      <div class="detail-item">
+        <label>Last Name</label>
+        <p>{{ customer.lastName }}</p>
+      </div>
+
+      <div class="detail-item">
+        <label>Email</label>
+        <p>{{ customer.email }}</p>
+      </div>
+
+      <div class="detail-item">
+        <label>Mobile</label>
+        <p>{{ customer.mobile }}</p>
+      </div>
+
+      <div class="detail-item">
+        <label>Date of Birth</label>
+        <p>{{ customer.dateOfBirth }}</p>
+      </div>
+
+      <div class="detail-item">
+        <label>Gender</label>
+        <p>{{ customer.gender }}</p>
+      </div>
+
+      <div class="detail-item">
+        <label>Customer Type</label>
+        <p>{{ customer.customerType }}</p>
+      </div>
+
+      <div class="detail-item">
+        <label>City</label>
+        <p>{{ customer.city }}</p>
+      </div>
+
+      <div class="detail-item">
+        <label>State</label>
+        <p>{{ customer.state }}</p>
+      </div>
+
+      <div class="detail-item">
+        <label>Pincode</label>
+        <p>{{ customer.pincode }}</p>
+      </div>
+
+      <div class="detail-item">
+        <label>Status</label>
+
+        <p>
+          <span
+            [class.active]="customer.status === 'ACTIVE'"
+            [class.inactive]="customer.status !== 'ACTIVE'">
+
+            {{ customer.status }}
+
+          </span>
+        </p>
+
+      </div>
+
+      <div class="detail-item">
+        <label>Created At</label>
+        <p>{{ customer.createdAt }}</p>
+      </div>
+
+      <div class="detail-item">
+        <label>Updated At</label>
+        <p>{{ customer.updatedAt }}</p>
+      </div>
+
+    </div>
+
+
+    <!-- ACTIONS -->
+    <div class="actions">
+
+      <button
+        type="button"
+        class="edit-button"
+        (click)="editCustomer()">
+
+        Edit Customer
+
+      </button>
+
+      <button
+        type="button"
+        class="back-button"
+        (click)="goBack()">
+
+        Back to Customers
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

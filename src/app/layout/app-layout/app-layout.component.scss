@@ -1,0 +1,37 @@
+.app-layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f5f7fb;
+  overflow: hidden;
+}
+
+.main-area {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+  overflow: hidden;
+}
+
+app-sidebar {
+  flex-shrink: 0;
+  height: 100%;
+}
+
+.content-area {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  padding: 30px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: auto;
+
+  /* Hide scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.content-area::-webkit-scrollbar {
+  display: none;
+}

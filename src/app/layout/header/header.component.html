@@ -1,0 +1,26 @@
+<header class="top-header">
+
+  <div class="logo">
+    Customer Portal
+  </div>
+
+  <div class="header-right">
+
+    <ng-container *ngIf="authService.currentUser$ | async as user">
+      <div class="user-info">
+        <span>Welcome</span>
+        <strong>{{ user.name }}</strong>
+        <span>{{ user.role }}</span>
+      </div>
+    </ng-container>
+
+    <button
+      type="button"
+      class="logout-button"
+      (click)="logout()">
+      Logout
+    </button>
+
+  </div>
+
+</header>

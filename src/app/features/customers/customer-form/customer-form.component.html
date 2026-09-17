@@ -1,0 +1,359 @@
+<div class="form-container">
+
+  <!-- HEADER -->
+
+  <div class="page-header">
+
+    <div>
+
+      <h1>
+        {{ isEditMode ? 'Edit Customer' : 'Add Customer' }}
+      </h1>
+
+      <p>
+        {{ isEditMode
+          ? 'Update customer information'
+          : 'Enter customer information'
+        }}
+      </p>
+
+    </div>
+
+    <button
+      type="button"
+      class="back-button"
+      (click)="goBack()">
+
+      ← Back
+
+    </button>
+
+  </div>
+
+
+  <!-- LOADING -->
+
+  <div *ngIf="loading" class="loading">
+
+    Loading customer information...
+
+  </div>
+
+
+  <!-- ERROR -->
+
+  <div *ngIf="errorMessage" class="error">
+
+    {{ errorMessage }}
+
+  </div>
+
+
+  <!-- FORM -->
+
+  <form
+    *ngIf="!loading"
+    [formGroup]="customerForm"
+    (ngSubmit)="onSubmit()">
+
+    <!-- PERSONAL INFORMATION -->
+
+    <div class="form-card">
+
+      <h2>Personal Information</h2>
+
+      <div class="form-grid">
+
+        <!-- FIRST NAME -->
+
+        <div class="form-group">
+
+          <label>First Name *</label>
+
+          <input
+            type="text"
+            formControlName="firstName"
+            placeholder="Enter first name">
+
+          <small
+            *ngIf="
+              customerForm.get('firstName')?.touched &&
+              customerForm.get('firstName')?.invalid
+            ">
+
+            First name is required.
+
+          </small>
+
+        </div>
+
+
+        <!-- LAST NAME -->
+
+        <div class="form-group">
+
+          <label>Last Name *</label>
+
+          <input
+            type="text"
+            formControlName="lastName"
+            placeholder="Enter last name">
+
+          <small
+            *ngIf="
+              customerForm.get('lastName')?.touched &&
+              customerForm.get('lastName')?.invalid
+            ">
+
+            Last name is required.
+
+          </small>
+
+        </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="form-group">
+
+          <label>Email *</label>
+
+          <input
+            type="email"
+            formControlName="email"
+            placeholder="Enter email">
+
+          <small
+            *ngIf="
+              customerForm.get('email')?.touched &&
+              customerForm.get('email')?.invalid
+            ">
+
+            Please enter a valid email.
+
+          </small>
+
+        </div>
+
+
+        <!-- MOBILE -->
+
+        <div class="form-group">
+
+          <label>Mobile *</label>
+
+          <input
+            type="text"
+            formControlName="mobile"
+            placeholder="Enter mobile number">
+
+          <small
+            *ngIf="
+              customerForm.get('mobile')?.touched &&
+              customerForm.get('mobile')?.invalid
+            ">
+
+            Mobile number is required.
+
+          </small>
+
+        </div>
+
+
+        <!-- DATE OF BIRTH -->
+
+        <div class="form-group">
+
+          <label>Date of Birth *</label>
+
+          <input
+            type="date"
+            formControlName="dateOfBirth">
+
+          <small
+            *ngIf="
+              customerForm.get('dateOfBirth')?.touched &&
+              customerForm.get('dateOfBirth')?.invalid
+            ">
+
+            Date of birth is required.
+
+          </small>
+
+        </div>
+
+
+        <!-- GENDER -->
+
+        <div class="form-group">
+
+          <label>Gender *</label>
+
+          <select formControlName="gender">
+
+            <option value="">Select Gender</option>
+
+            <option value="MALE">
+              Male
+            </option>
+
+            <option value="FEMALE">
+              Female
+            </option>
+
+            <option value="OTHER">
+              Other
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ADDRESS -->
+
+    <div class="form-card">
+
+      <h2>Address Information</h2>
+
+      <div class="form-grid">
+
+        <!-- CITY -->
+
+        <div class="form-group">
+
+          <label>City *</label>
+
+          <input
+            type="text"
+            formControlName="city"
+            placeholder="Enter city">
+
+        </div>
+
+
+        <!-- STATE -->
+
+        <div class="form-group">
+
+          <label>State *</label>
+
+          <input
+            type="text"
+            formControlName="state"
+            placeholder="Enter state">
+
+        </div>
+
+
+        <!-- PINCODE -->
+
+        <div class="form-group">
+
+          <label>Pincode *</label>
+
+          <input
+            type="text"
+            formControlName="pincode"
+            placeholder="Enter pincode">
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- CUSTOMER INFORMATION -->
+
+    <div class="form-card">
+
+      <h2>Customer Information</h2>
+
+      <div class="form-grid">
+
+        <!-- CUSTOMER TYPE -->
+
+        <div class="form-group">
+
+          <label>Customer Type *</label>
+
+          <select formControlName="customerType">
+
+            <option value="">
+              Select Customer Type
+            </option>
+
+            <option value="INDIVIDUAL">
+              Individual
+            </option>
+
+            <option value="BUSINESS">
+              Business
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- STATUS -->
+
+        <div class="form-group">
+
+          <label>Status *</label>
+
+          <select formControlName="status">
+
+            <option value="ACTIVE">
+              Active
+            </option>
+
+            <option value="INACTIVE">
+              Inactive
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- BUTTONS -->
+
+    <div class="form-actions">
+
+      <button
+        type="button"
+        class="cancel-button"
+        (click)="goBack()">
+
+        Cancel
+
+      </button>
+
+
+      <button
+        type="submit"
+        class="save-button"
+        [disabled]="saving">
+
+        {{ saving
+          ? 'Saving...'
+          : (isEditMode ? 'Update Customer' : 'Create Customer')
+        }}
+
+      </button>
+
+    </div>
+
+  </form>
+
+</div>

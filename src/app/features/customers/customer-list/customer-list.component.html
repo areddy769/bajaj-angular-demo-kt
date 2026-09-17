@@ -1,0 +1,283 @@
+<div class="customer-container">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+
+    <div>
+      <h1>Customers</h1>
+      <p>Manage customer information</p>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="search-box">
+
+      <input
+        type="text"
+        [(ngModel)]="searchText"
+        placeholder="Search name, email or mobile"
+      />
+
+      <button type="button" (click)="onSearch()">
+        Search
+      </button>
+
+    </div>
+
+    <!-- ADD CUSTOMER -->
+    <button routerLink="/customers/add">
+      + Add Customer
+    </button>
+
+  </div>
+
+
+  <!-- FILTERS -->
+  <div class="filters">
+
+    <!-- STATUS -->
+    <select [(ngModel)]="status">
+      <option value="">All Status</option>
+      <option value="ACTIVE">Active</option>
+      <option value="INACTIVE">Inactive</option>
+    </select>
+
+    <!-- CITY -->
+    <input
+      type="text"
+      [(ngModel)]="city"
+      placeholder="Enter city"
+    />
+
+    <!-- CUSTOMER TYPE -->
+    <select [(ngModel)]="customerType">
+      <option value="">All Customer Types</option>
+      <option value="INDIVIDUAL">Individual</option>
+      <option value="BUSINESS">Business</option>
+    </select>
+
+    <!-- APPLY FILTER -->
+    <button type="button" (click)="onFilter()">
+      Apply Filters
+    </button>
+
+    <!-- SORT BY -->
+    <select [(ngModel)]="sortBy">
+      <option value="">Sort By</option>
+      <option value="name">Name</option>
+      <option value="createdAt">Created Date</option>
+      <option value="status">Status</option>
+    </select>
+
+    <!-- SORT ORDER -->
+    <select [(ngModel)]="sortOrder">
+      <option value="asc">Ascending</option>
+      <option value="desc">Descending</option>
+    </select>
+
+    <!-- SORT -->
+    <button type="button" (click)="onSort()">
+      Sort
+    </button>
+
+  </div>
+
+
+  <!-- LOADING -->
+  <div *ngIf="loading" class="loading">
+    Loading customers...
+  </div>
+
+
+  <!-- ERROR -->
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+
+
+  <!-- CUSTOMER DATA -->
+  <div *ngIf="!loading && !errorMessage">
+
+    <!-- EMPTY -->
+    <div *ngIf="customers.length === 0" class="empty">
+      No customers found.
+    </div>
+
+
+    <!-- TABLE -->
+    <table *ngIf="customers.length > 0">
+
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>City</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let customer of customers">
+
+          <td>
+            {{ customer.id }}
+          </td>
+
+          <td>
+            {{ customer.firstName }}
+            {{ customer.lastName }}
+          </td>
+
+          <td>
+            {{ customer.email }}
+          </td>
+
+          <td>
+            {{ customer.mobile }}
+          </td>
+
+          <td>
+            {{ customer.city }}
+          </td>
+
+          <td>
+            <span
+              [class.active]="customer.status === 'ACTIVE'"
+              [class.inactive]="customer.status !== 'ACTIVE'">
+
+              {{ customer.status }}
+
+            </span>
+          </td>
+
+          <td class="actions">
+
+  <button
+    type="button"
+    class="view-button"
+    [routerLink]="['/customers/details', customer.id]">
+
+    View
+
+  </button>
+
+  <button
+    type="button"
+    class="edit-button"
+    [routerLink]="['/customers/edit', customer.id]">
+
+    Edit
+
+  </button>
+
+  <button
+    type="button"
+    class="delete-button"
+    (click)="deleteCustomer(customer)"
+    [disabled]="deleting">
+
+    Delete
+
+  </button>
+
+</td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+
+    <!-- PAGINATION -->
+    <div
+      *ngIf="customers.length > 0"
+      class="pagination">
+
+      <button
+        type="button"
+        (click)="previousPage()"
+        [disabled]="page === 1">
+
+        ← Previous
+
+      </button>
+
+      <span>
+        Page {{ page }} of {{ totalPages }}
+      </span>
+
+      <button
+        type="button"
+        (click)="nextPage()"
+        [disabled]="page === totalPages">
+
+        Next →
+
+      </button>
+
+    </div>
+
+
+    <!-- TOTAL -->
+    <div
+      *ngIf="customers.length > 0"
+      class="total-count">
+
+      Showing page {{ page }}
+      of {{ totalPages }}
+      |
+      Total Customers: {{ totalCustomers }}
+
+    </div>
+
+  </div>
+<!-- DELETE CONFIRMATION -->
+
+<div
+  *ngIf="deleteTarget"
+  class="modal-overlay">
+
+  <div class="delete-modal">
+
+    <h2>Delete Customer</h2>
+
+    <p>
+      Are you sure you want to delete
+      <strong>
+        {{ deleteTarget.firstName }}
+        {{ deleteTarget.lastName }}
+      </strong>?
+    </p>
+
+    <div class="modal-actions">
+
+      <button
+        type="button"
+        class="cancel-delete"
+        (click)="cancelDelete()"
+        [disabled]="deleting">
+
+        Cancel
+
+      </button>
+
+      <button
+        type="button"
+        class="confirm-delete"
+        (click)="confirmDelete()"
+        [disabled]="deleting">
+
+        {{ deleting ? 'Deleting...' : 'Delete' }}
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+</div>
