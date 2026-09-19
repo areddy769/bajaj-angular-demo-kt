@@ -96,3 +96,11 @@ export interface UserFormValue {
   role: UserRole;
   status: UserStatus;
 }
+
+export interface UserQuery {
+  page: number;
+  limit: number;
+  search?: string;
+  role?: UserRole | '';
+  status?: UserStatus | '';
+}
