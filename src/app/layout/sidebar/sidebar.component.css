@@ -1,0 +1,22 @@
+.sidebar {
+  width: 220px;
+  min-height: calc(100vh - 100px);
+  border-right: 1px solid #ddd;
+  background: #fafafa;
+  padding: 20px 0;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  padding: 12px 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+a:hover {
+  background: #eee;
+}

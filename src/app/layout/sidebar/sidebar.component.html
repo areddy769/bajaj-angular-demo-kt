@@ -1,0 +1,13 @@
+<aside class="sidebar">
+  <nav>
+    <a routerLink="/dashboard">Dashboard</a>
+
+    <a routerLink="/customers">
+      Customers
+    </a>
+
+    <a routerLink="/users" *ngIf="role === 'ADMIN'">
+      Users
+    </a>
+  </nav>
+</aside>

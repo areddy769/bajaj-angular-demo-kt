@@ -1,0 +1,12 @@
+<header class="header">
+  <div class="logo">
+    BAJAJ KT
+  </div>
+
+  <div class="user-info" *ngIf="user">
+    <div>
+      <strong>{{ user.name }}</strong>
+      <small>{{ user.role }}</small>
+    </div>
+  </div>
+</header>

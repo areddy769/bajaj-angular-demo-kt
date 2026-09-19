@@ -1,0 +1,26 @@
+.header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.user-info {
+  text-align: right;
+}
+
+.user-info strong {
+  display: block;
+}
+
+.user-info small {
+  color: #666;
+}

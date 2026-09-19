@@ -1,0 +1,21 @@
+<div class="layout">
+
+  <app-header
+    [user]="user">
+  </app-header>
+
+  <div class="layout-body">
+
+    <app-sidebar
+      [role]="user?.role ?? null">
+    </app-sidebar>
+
+    <main class="content">
+      <!-- <router-outlet></router-outlet> -->
+    </main>
+
+  </div>
+
+  <app-footer></app-footer>
+
+</div>
