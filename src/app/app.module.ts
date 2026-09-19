@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
 import { HttpClientModule } from '@angular/common/http';
+import { allIntersept } from './core/interceptors/exportintersept';
 
 
 @NgModule({
@@ -16,7 +17,10 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     LayoutComponent,
-    HttpClientModule
+    HttpClientModule,
+    allIntersept
+    
+
     
     
 ],
