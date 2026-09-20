@@ -4,6 +4,8 @@
   border-right: 1px solid #ddd;
   background: #fafafa;
   padding: 20px 0;
+  display: flex;
+  flex-direction: column;
 }
 
 nav {
@@ -11,12 +13,32 @@ nav {
   flex-direction: column;
 }
 
-a {
+nav a {
   padding: 12px 20px;
   text-decoration: none;
   color: #333;
 }
 
-a:hover {
+nav a:hover {
   background: #eee;
+}
+
+.logout-btn {
+  margin: auto 16px 0;   /* auto top margin pushes it to the bottom */
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  background: #fde8e8;
+  color: #b42318;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.logout-btn:hover {
+  background: #fbd3d3;
+}
+
+.logout-btn:active {
+  transform: scale(0.97);
 }

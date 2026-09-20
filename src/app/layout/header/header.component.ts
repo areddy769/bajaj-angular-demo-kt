@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SessionUser } from '../../models/models';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -10,5 +11,5 @@ import { SessionUser } from '../../models/models';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  @Input() user: SessionUser | null = null;
+  @Input() user$!: Observable<SessionUser | null> ;
 }

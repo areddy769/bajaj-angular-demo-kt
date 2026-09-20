@@ -2,12 +2,12 @@
   <nav>
     <a routerLink="/dashboard">Dashboard</a>
 
-    <a routerLink="/customers">
-      Customers
-    </a>
+    <a routerLink="/customers">Customers</a>
 
-    <a routerLink="/user" *ngIf="role === 'ADMIN'">
-      Users
-    </a>
+    <a routerLink="/user" *ngIf="auth.hasRole('ADMIN')">Users</a>
   </nav>
+
+  <button type="button" class="logout-btn" (click)="logout()">
+    Logout
+  </button>
 </aside>

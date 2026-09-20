@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SessionUser } from '../models/models';
+import { Observable } from 'rxjs';
+import { AuthService } from '../core/services/auth/auth.service';
 
 @Component({
   selector: 'app-layout',
@@ -20,11 +22,12 @@ import { SessionUser } from '../models/models';
 })
 export class LayoutComponent {
 
-  user: SessionUser | null = {
-    id: 1,
-    name: 'Admin User',
-    email: 'admin@example.com',
-    role: 'ADMIN',
-    status: 'ACTIVE'
-  };
+
+
+  user$: Observable<SessionUser | null>;
+
+  constructor(private auth: AuthService, private router : Router) {
+    this.user$ = this.auth.currUser$;
+  }
+  
 }

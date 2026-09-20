@@ -1,14 +1,13 @@
 <div class="layout">
 
   <app-header
-    [user]="user">
+    [user$]="user$">
   </app-header>
 
   <div class="layout-body">
 
-    <app-sidebar
-      [role]="user?.role ?? null">
-    </app-sidebar>
+    <app-sidebar></app-sidebar>
+    
 
     <main class="content">
       <router-outlet></router-outlet>

@@ -3,10 +3,10 @@
     BAJAJ KT
   </div>
 
-  <div class="user-info" *ngIf="user">
+  <div class="user-info" *ngIf="user$ | async as curr">
     <div>
-      <strong>{{ user.name }}</strong>
-      <small>{{ user.role }}</small>
+      <strong>{{ curr.name }}</strong>
+      <small>{{ curr.role }}</small>
     </div>
   </div>
 </header>
