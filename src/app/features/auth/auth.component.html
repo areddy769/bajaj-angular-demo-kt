@@ -1,1 +1,132 @@
-<p>auth works!</p>
+<div class="login-page">
+
+  <div class="login-container">
+
+    <!-- Left side -->
+    <div class="login-info">
+
+      <div class="logo">
+        BAJAJ KT
+      </div>
+
+      <h1>Customer Portal</h1>
+
+      <p>
+        Manage customers, users and dashboard information
+        from one place.
+      </p>
+
+    </div>
+
+    <!-- Login form -->
+    <div class="login-card">
+
+      <h2>Sign In</h2>
+
+      <p class="subtitle">
+        Enter your account details to continue.
+      </p>
+
+      <form
+        [formGroup]="form"
+        (ngSubmit)="submit()"
+        novalidate
+      >
+
+        <!-- Email -->
+        <div class="form-group">
+
+          <label for="email">
+            Email
+          </label>
+
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="Enter your email"
+            autocomplete="username"
+          />
+
+          <small
+            class="error"
+            *ngIf="email?.touched && email?.hasError('required')"
+          >
+            Email is required.
+          </small>
+
+          <small
+            class="error"
+            *ngIf="email?.touched && email?.hasError('email')"
+          >
+            Enter a valid email address.
+          </small>
+
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+
+          <label for="password">
+            Password
+          </label>
+
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+          />
+
+          <small
+            class="error"
+            *ngIf="password?.touched && password?.hasError('required')"
+          >
+            Password is required.
+          </small>
+
+          <small
+            class="error"
+            *ngIf="password?.touched && password?.hasError('minlength')"
+          >
+            Password must be at least 6 characters.
+          </small>
+
+        </div>
+
+        <!-- Server error -->
+        <div
+          class="server-error"
+          *ngIf="serverError"
+        >
+          {{ serverError }}
+        </div>
+
+        <!-- Submit -->
+        <button
+          type="submit"
+          [disabled]="loading"
+        >
+          {{ loading ? 'Signing in...' : 'Sign In' }}
+        </button>
+
+      </form>
+
+      <div class="demo-info">
+        <strong>Demo credentials</strong>
+
+        <div>
+          Admin: admin@example.com / Admin@123
+        </div>
+
+        <div>
+          User: user@example.com / User@123
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

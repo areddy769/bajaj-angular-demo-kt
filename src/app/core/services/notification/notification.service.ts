@@ -32,6 +32,7 @@ export class NotificationService {
   }
 
   private push(type: Toast['type'], message: string): void {
+    console.log('notification')
     const toast: Toast = { id: nextId++, type, message };
     this.toastsSubject.next([...this.toastsSubject.value, toast]);
     // Auto-dismiss so trainees don't need to wire it everywhere.

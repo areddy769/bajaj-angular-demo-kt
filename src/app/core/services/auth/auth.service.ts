@@ -8,8 +8,8 @@ import { backend } from '../api';
 
 
 
-const USER='jdnsl'
-const TOKEN='fnkdmk'
+const USER='user'
+const TOKEN='token'
 
 @Injectable({
   providedIn: 'root'
