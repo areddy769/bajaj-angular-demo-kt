@@ -1,3 +1,7 @@
+
+<app-error-notification  *ngIf="serverError" [message]="serverError" ></app-error-notification>
+
+
 <div class="login-page">
 
   <div class="login-container">
@@ -96,12 +100,13 @@
         </div>
 
         <!-- Server error -->
-        <div
+        <!-- <div
           class="server-error"
           *ngIf="serverError"
         >
           {{ serverError }}
-        </div>
+        </div> -->
+
 
         <!-- Submit -->
         <button

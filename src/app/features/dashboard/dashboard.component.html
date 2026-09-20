@@ -1,1 +1,64 @@
-<p>dashboard works!</p>
+<h2>Dashboard</h2>
+
+<ng-container *ngIf="state$ | async as state">
+
+  <div *ngIf="state.loading" class="dashboard">
+
+    <div class="card">
+      <span>Total Customers</span>
+      <strong>...</strong>
+    </div>
+
+    <div class="card">
+      <span>Active</span>
+      <strong>...</strong>
+    </div>
+
+    <div class="card">
+      <span>Inactive</span>
+      <strong>...</strong>
+    </div>
+
+    <div class="card">
+      <span>Total Users</span>
+      <strong>...</strong>
+    </div>
+
+  </div>
+
+  <div *ngIf="state.error" class="error">
+    {{ state.error }}
+
+    <button type="button" (click)="load()">
+      Retry
+    </button>
+  </div>
+
+  <div
+    *ngIf="state.summary as summary"
+    class="dashboard"
+  >
+
+    <div class="card">
+      <span>Total Customers</span>
+      <strong>{{ summary.totalCustomers }}</strong>
+    </div>
+
+    <div class="card">
+      <span>Active</span>
+      <strong>{{ summary.activeCustomers }}</strong>
+    </div>
+
+    <div class="card">
+      <span>Inactive</span>
+      <strong>{{ summary.inactiveCustomers }}</strong>
+    </div>
+
+    <div class="card">
+      <span>Total Users</span>
+      <strong>{{ summary.totalUsers }}</strong>
+    </div>
+
+  </div>
+
+</ng-container>

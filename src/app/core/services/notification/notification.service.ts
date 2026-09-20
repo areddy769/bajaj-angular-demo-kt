@@ -35,7 +35,7 @@ export class NotificationService {
     console.log('notification')
     const toast: Toast = { id: nextId++, type, message };
     this.toastsSubject.next([...this.toastsSubject.value, toast]);
-    // Auto-dismiss so trainees don't need to wire it everywhere.
+  
     setTimeout(() => this.dismiss(toast.id), 4000);
   }
 }

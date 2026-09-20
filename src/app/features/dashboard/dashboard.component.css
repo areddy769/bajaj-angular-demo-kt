@@ -1,0 +1,51 @@
+h2 {
+  margin-bottom: 20px;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 600px;
+}
+
+.card {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.card span {
+  display: block;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.card strong {
+  display: block;
+  font-size: 28px;
+  font-weight: 600;
+  color: #222;
+}
+
+.error {
+  padding: 12px;
+  margin-bottom: 16px;
+  color: #b91c1c;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.error button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+}
