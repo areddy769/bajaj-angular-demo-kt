@@ -1,0 +1,90 @@
+<div class="login-container">
+
+  <div class="login-box">
+
+```
+<h1>Login</h1>
+
+<p>Welcome to Angular Application</p>
+
+<form>
+
+  <div class="form-group">
+
+    <label>Email ID</label>
+
+    <input
+      type="email"
+      name="email"
+      placeholder="Enter Email ID"
+      #emailInput
+    />
+
+  </div>
+
+  <div class="form-group">
+
+    <label>Password</label>
+
+    <input
+      type="password"
+      name="password"
+      placeholder="Enter Password"
+      #passwordInput
+    />
+
+  </div>
+
+  <button
+    type="button"
+    [disabled]="loading"
+    (click)="login(emailInput.value, passwordInput.value)">
+
+    {{ loading ? 'Logging in...' : 'Login' }}
+
+  </button>
+
+</form>
+
+<p
+  class="error-message"
+  *ngIf="loginError">
+  {{ errorMessage }}
+</p>
+
+
+<!-- Login Information -->
+
+<div class="login-info">
+
+  <h3>Available Login Users</h3>
+
+  <div class="user-details">
+
+    <p>
+      <strong>Admin User</strong>
+    </p>
+
+    <p>
+      <strong>Email:</strong>
+      admin@example.com
+    </p>
+
+    <p>
+      <strong>Password:</strong>
+      Admin@123
+    </p>
+
+    <p>
+      <strong>Role:</strong>
+      ADMIN
+    </p>
+
+  </div>
+
+</div>
+```
+
+  </div>
+
+</div>

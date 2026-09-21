@@ -1,0 +1,172 @@
+
+<div class="dashboard-container">
+
+  <!-- Header -->
+  <div class="dashboard-header">
+
+    <div class="header-content">
+
+      <span class="welcome-label">
+        BAJAJ CUSTOMER PORTAL
+      </span>
+
+      <h1>
+        Dashboard
+      </h1>
+
+      <p>
+        Welcome to Bajaj Customer Management Portal
+      </p>
+
+    </div>
+
+    <!-- Logout -->
+    <button
+      type="button"
+      class="logout-button"
+      (click)="logout()">
+
+      <span class="logout-icon">
+        ↪
+      </span>
+
+      Logout
+
+    </button>
+
+  </div>
+
+
+  <!-- Welcome Card -->
+  <div class="welcome-card">
+
+    <div class="welcome-text">
+
+      <h2>
+        Manage your customers with ease
+      </h2>
+
+      <p>
+        Access customer information and manage your customer records
+        from one place.
+      </p>
+
+      <button
+        type="button"
+        class="customer-button"
+        (click)="manageCustomers()">
+
+        Manage Customers
+
+        <span>
+          →
+        </span>
+
+      </button>
+
+    </div>
+
+
+    <div class="welcome-illustration">
+
+      <div class="illustration-circle">
+        👥
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Employee Section -->
+  <div class="employee-section">
+
+    <div class="section-header">
+
+      <h2>
+        Manage your Employees
+      </h2>
+
+      <p>
+        Employee overview and status
+      </p>
+
+    </div>
+
+
+    <!-- Employee Cards -->
+    <div class="employee-cards">
+
+
+      <!-- Total Employees -->
+      <div class="employee-card total-card">
+
+        <div class="employee-icon">
+          👥
+        </div>
+
+        <div class="employee-info">
+
+          <span>
+            Total Employees
+          </span>
+
+          <strong>
+            {{ totalEmployees }}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- Active Employees -->
+      <div class="employee-card active-card">
+
+        <div class="employee-icon">
+          ✓
+        </div>
+
+        <div class="employee-info">
+
+          <span>
+            Active Employees
+          </span>
+
+          <strong>
+            {{ activeEmployees }}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- Inactive Employees -->
+      <div class="employee-card inactive-card">
+
+        <div class="employee-icon">
+          !
+        </div>
+
+        <div class="employee-info">
+
+          <span>
+            Inactive Employees
+          </span>
+
+          <strong>
+            {{ inactiveEmployees }}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
+

@@ -1,0 +1,93 @@
+<div class="customer-list-container">
+
+  <div class="customer-list-header">
+    <div>
+      <h2>Customers</h2>
+      <p>Manage customer information</p>
+    </div>
+
+
+<button class="add-btn" routerLink="/customers/add">
+  + Add Customer
+</button>
+
+
+  </div>
+
+  <div class="table-container">
+
+
+<table class="customer-table">
+
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Mobile</th>
+      <th>City</th>
+      <th>Customer Type</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <tr *ngFor="let customer of customers">
+
+      <td>{{ customer.firstName }}</td>
+
+      <td>{{ customer.lastName }}</td>
+
+      <td>{{ customer.email }}</td>
+
+      <td>{{ customer.mobile || '-' }}</td>
+
+      <td>{{ customer.city || '-' }}</td>
+
+      <td>{{ customer.customerType || '-' }}</td>
+
+      <td>
+        <span
+          class="status"
+          [ngClass]="{
+            'status-active': customer.status === 'ACTIVE',
+            'status-inactive': customer.status === 'INACTIVE'
+          }">
+          {{ customer.status }}
+        </span>
+      </td>
+
+      <td class="actions">
+
+        <button
+          class="edit-btn"
+          [routerLink]="['/customers/edit', customer.id]">
+          Edit
+        </button>
+
+        <button
+          class="delete-btn"
+          (click)="deleteCustomer(customer.id)">
+          Delete
+        </button>
+
+      </td>
+
+    </tr>
+
+    <tr *ngIf="customers.length === 0">
+      <td colspan="8" class="empty-row">
+        No customers found.
+      </td>
+    </tr>
+
+  </tbody>
+
+</table>
+
+
+  </div>
+
+</div>
