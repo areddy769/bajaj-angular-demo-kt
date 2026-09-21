@@ -1,15 +1,56 @@
+/* html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+} */
+
 .layout {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
+/* Header = 60px */
+app-header {
+  flex: 0 0 60px;
+  height: 60px;
+}
+
+/* Middle section */
 .layout-body {
   flex: 1;
+  min-height: 0;
   display: flex;
+  overflow: hidden;
 }
 
+/* Sidebar = 220px */
+app-sidebar {
+  flex: 0 0 220px;
+  width: 220px;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* Router content */
 .content {
   flex: 1;
+  min-width: 0;
+  min-height: 0;
+
   padding: 20px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Footer = 40px */
+app-footer {
+  flex: 0 0 40px;
+  height: 40px;
 }

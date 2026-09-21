@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CustomersComponent } from './customer.component';
 import { NewComponent } from './new/new.component';
 import { CustomerDetailsComponent} from './edit/edit.component';
+import { unsavedChangesGuard } from 'src/app/core/guards/unsaved.guard';
 
 
 const routes: Routes = [
@@ -14,11 +15,13 @@ const routes: Routes = [
   
     {
         path: 'new',
-        component:NewComponent
+        component:NewComponent,
+        canDeactivate:[unsavedChangesGuard]
       },
       {
         path: 'edit/:id',
-        component:CustomerDetailsComponent
+        component:CustomerDetailsComponent,
+        canDeactivate:[unsavedChangesGuard]
       }
     
 ];

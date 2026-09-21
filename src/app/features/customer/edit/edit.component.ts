@@ -51,6 +51,21 @@ export class CustomerDetailsComponent implements OnInit {
     private load: LoadingService,
     private noi: NotificationService
   ) {}
+  
+  canDeactivate(): boolean {
+
+    if (this.customerForm.dirty) {
+
+      return confirm(
+        'You have unsaved changes. Are you sure you want to leave this page?'
+      );
+
+    }
+
+    return true;
+  }
+
+
 
   ngOnInit(): void {
 
@@ -258,8 +273,13 @@ export class CustomerDetailsComponent implements OnInit {
   }
 
 
+  
+
   /**
    * Validation message
+   * 
+   * 
+   * 
    */
   getErrorMessage(field: string): string {
 
@@ -268,6 +288,9 @@ export class CustomerDetailsComponent implements OnInit {
     if (!control || !control.errors) {
       return '';
     }
+
+    
+    
 
     if (control.errors['required']) {
 

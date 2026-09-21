@@ -344,7 +344,7 @@ export class ManageComponent implements OnInit {
 
 
     this.router.navigate([
-      'user',
+      
       'edit'
     ]);
   }
@@ -362,7 +362,6 @@ export class ManageComponent implements OnInit {
 
 
     this.router.navigate([
-
       'user',
       'edit',
        

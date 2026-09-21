@@ -104,3 +104,10 @@ export interface UserQuery {
   role?: UserRole | '';
   status?: UserStatus | '';
 }
+
+
+import { Observable } from 'rxjs';
+
+export interface CanComponentDeactivate {
+  canDeactivate: () => boolean | Observable<boolean>;
+}

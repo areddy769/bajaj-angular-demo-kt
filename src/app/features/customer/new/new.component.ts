@@ -361,5 +361,18 @@ export class NewComponent implements OnInit {
 
     });
   }
+
+   canDeactivate(): boolean {
+
+    if (this.customerForm.dirty) {
+
+      return confirm(
+        'You have unsaved changes. Are you sure you want to leave this page?'
+      );
+
+    }
+
+    return true;
+  }
 }
 

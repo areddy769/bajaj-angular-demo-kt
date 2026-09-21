@@ -120,6 +120,22 @@ export class UserFormComponent implements OnInit {
     }
 
   }
+   
+  
+  //  canDeactivate(): boolean {
+
+  //   if (this.userForm.dirty) {
+
+  //     return confirm(
+  //       'You have unsaved changes. Are you sure you want to leave this page?'
+  //     );
+
+    // }
+
+  //   return true;
+  // }
+
+
 
 
   /* =========================================
@@ -542,10 +558,9 @@ export class UserFormComponent implements OnInit {
           /*
            * Go back to users list.
            */
-          this.router.navigate([
-            '/users'
-          ]);
-
+this.router.navigate(['/users'], {
+  replaceUrl: true
+});
         },
 
 

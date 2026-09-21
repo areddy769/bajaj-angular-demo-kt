@@ -97,6 +97,9 @@ export class AuthComponent implements OnInit {
           this.router.navigate(['/dashboard']);
 
           
+          
+
+          
         },
 
         error: (err) => {
