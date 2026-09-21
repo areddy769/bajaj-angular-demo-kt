@@ -1,0 +1,589 @@
+<div class="customer-form-page">
+
+  <!-- =========================================
+       Header
+  ========================================== -->
+
+  <div class="page-header">
+
+    <div>
+
+      <h1>
+        Customer Details
+      </h1>
+
+      <p>
+        View and manage customer information
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       Server Error
+  ========================================== -->
+
+  <div
+    class="server-error"
+    *ngIf="serverError">
+
+    <span class="error-icon">
+      !
+    </span>
+
+    <span>
+      {{ serverError }}
+    </span>
+
+  </div>
+
+
+  <!-- =========================================
+       Loading
+  ========================================== -->
+
+  <div
+    class="loading-message"
+    *ngIf="loading && !customerForm.value.firstName">
+
+    Loading customer...
+
+  </div>
+
+
+  <!-- =========================================
+       Form
+  ========================================== -->
+
+  <form
+    *ngIf="customerForm"
+    [formGroup]="customerForm"
+    (ngSubmit)="update()"
+    novalidate>
+
+
+    <!-- =======================================
+         Personal Information
+    ======================================== -->
+
+    <div class="form-card">
+
+      <div class="card-header">
+
+        <h2>
+          Personal Information
+        </h2>
+
+        <p>
+          Basic information about the customer
+        </p>
+
+      </div>
+
+
+      <div class="form-grid">
+
+
+        <!-- First Name -->
+
+        <div class="form-field">
+
+          <label for="firstName">
+            First Name
+
+            <span class="required">
+              *
+            </span>
+          </label>
+
+          <input
+            id="firstName"
+            type="text"
+            formControlName="firstName"
+            placeholder="Enter first name"
+            [class.invalid]="hasError('firstName')"
+            [disabled]="!editMode"
+          />
+
+          <div
+            class="field-error"
+            *ngIf="hasError('firstName')">
+
+            {{ getErrorMessage('firstName') }}
+
+          </div>
+
+        </div>
+
+
+        <!-- Last Name -->
+
+        <div class="form-field">
+
+          <label for="lastName">
+
+            Last Name
+
+            <span class="required">
+              *
+            </span>
+
+          </label>
+
+          <input
+            id="lastName"
+            type="text"
+            formControlName="lastName"
+            placeholder="Enter last name"
+            [class.invalid]="hasError('lastName')"
+            [disabled]="!editMode"
+          />
+
+          <div
+            class="field-error"
+            *ngIf="hasError('lastName')">
+
+            {{ getErrorMessage('lastName') }}
+
+          </div>
+
+        </div>
+
+
+        <!-- Email -->
+
+        <div class="form-field">
+
+          <label for="email">
+
+            Email
+
+            <span class="required">
+              *
+            </span>
+
+          </label>
+
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="example@email.com"
+            autocomplete="email"
+            [class.invalid]="hasError('email')"
+            [disabled]="!editMode"
+          />
+
+          <div
+            class="field-error"
+            *ngIf="hasError('email')">
+
+            {{ getErrorMessage('email') }}
+
+          </div>
+
+        </div>
+
+
+        <!-- Mobile -->
+
+        <div class="form-field">
+
+          <label for="mobile">
+
+            Mobile
+
+            <span class="required">
+              *
+            </span>
+
+          </label>
+
+          <input
+            id="mobile"
+            type="tel"
+            formControlName="mobile"
+            placeholder="9876543210"
+            autocomplete="tel"
+            [class.invalid]="hasError('mobile')"
+            [disabled]="!editMode"
+          />
+
+          <div
+            class="field-error"
+            *ngIf="hasError('mobile')">
+
+            {{ getErrorMessage('mobile') }}
+
+          </div>
+
+        </div>
+
+
+        <!-- Gender -->
+
+        <div class="form-field">
+
+          <label for="gender">
+
+            Gender
+
+            <span class="required">
+              *
+            </span>
+
+          </label>
+
+          <select
+            id="gender"
+            formControlName="gender"
+            [class.invalid]="hasError('gender')"
+            [disabled]="!editMode">
+
+            <option value="">
+              Select gender
+            </option>
+
+            <option
+              *ngFor="let gender of genders"
+              [value]="gender">
+
+              {{ gender }}
+
+            </option>
+
+          </select>
+
+          <div
+            class="field-error"
+            *ngIf="hasError('gender')">
+
+            {{ getErrorMessage('gender') }}
+
+          </div>
+
+        </div>
+
+
+        <!-- Customer Type -->
+
+        <div class="form-field">
+
+          <label for="customerType">
+
+            Customer Type
+
+            <span class="required">
+              *
+            </span>
+
+          </label>
+
+          <select
+            id="customerType"
+            formControlName="customerType"
+            [class.invalid]="hasError('customerType')"
+            [disabled]="!editMode">
+
+            <option
+              *ngFor="let type of customerTypes"
+              [value]="type">
+
+              {{ type }}
+
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- Status -->
+
+        <div class="form-field">
+
+          <label for="status">
+
+            Status
+
+            <span class="required">
+              *
+            </span>
+
+          </label>
+
+          <select
+            id="status"
+            formControlName="status"
+            [class.invalid]="hasError('status')"
+            [disabled]="!editMode">
+
+            <option
+              *ngFor="let status of statuses"
+              [value]="status">
+
+              {{ status }}
+
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =======================================
+         Address
+    ======================================== -->
+
+    <div class="form-card">
+
+      <div class="card-header">
+
+        <h2>
+          Address
+        </h2>
+
+        <p>
+          Customer location information
+        </p>
+
+      </div>
+
+
+      <div class="form-grid">
+
+
+        <!-- City -->
+
+        <div class="form-field">
+
+          <label for="city">
+
+            City
+
+            <span class="required">
+              *
+            </span>
+
+          </label>
+
+          <input
+            id="city"
+            type="text"
+            formControlName="city"
+            placeholder="Enter city"
+            [class.invalid]="hasError('city')"
+            [disabled]="!editMode"
+          />
+
+          <div
+            class="field-error"
+            *ngIf="hasError('city')">
+
+            {{ getErrorMessage('city') }}
+
+          </div>
+
+        </div>
+
+
+        <!-- State -->
+
+        <div class="form-field">
+
+          <label for="state">
+
+            State
+
+            <span class="required">
+              *
+            </span>
+
+          </label>
+
+          <input
+            id="state"
+            type="text"
+            formControlName="state"
+            placeholder="Enter state"
+            [class.invalid]="hasError('state')"
+            [disabled]="!editMode"
+          />
+
+          <div
+            class="field-error"
+            *ngIf="hasError('state')">
+
+            {{ getErrorMessage('state') }}
+
+          </div>
+
+        </div>
+
+
+        <!-- Pincode -->
+
+        <div class="form-field">
+
+          <label for="pincode">
+
+            Pincode
+
+            <span class="required">
+              *
+            </span>
+
+          </label>
+
+          <input
+            id="pincode"
+            type="text"
+            inputmode="numeric"
+            maxlength="6"
+            formControlName="pincode"
+            placeholder="411001"
+            [class.invalid]="hasError('pincode')"
+            [disabled]="!editMode"
+          />
+
+          <div
+            class="field-error"
+            *ngIf="hasError('pincode')">
+
+            {{ getErrorMessage('pincode') }}
+
+          </div>
+
+        </div>
+
+
+        <!-- Address -->
+
+        <div class="form-field full-width">
+
+          <label for="address">
+
+            Address
+
+            <span class="required">
+              *
+            </span>
+
+          </label>
+
+          <textarea
+            id="address"
+            formControlName="address"
+            rows="4"
+            placeholder="Enter customer address"
+            [class.invalid]="hasError('address')"
+            [disabled]="!editMode">
+          </textarea>
+
+          <div
+            class="field-error"
+            *ngIf="hasError('address')">
+
+            {{ getErrorMessage('address') }}
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =======================================
+         Actions
+    ======================================== -->
+
+    <div class="form-actions">
+
+
+      <!-- Back -->
+
+      <button
+        type="button"
+        class="cancel-btn"
+        (click)="back()"
+        [disabled]="loading">
+
+        Back
+
+      </button>
+
+
+      <!-- Delete - ADMIN ONLY -->
+
+      <button
+        *ngIf="isAdmin && !editMode"
+        type="button"
+        class="delete-btn"
+        (click)="deleteCustomer()"
+        [disabled]="loading">
+
+        Delete
+
+      </button>
+
+
+      <!-- Edit -->
+
+      <button
+        *ngIf="!editMode"
+        type="button"
+        class="submit-btn"
+        (click)="enableEdit()"
+        [disabled]="loading">
+
+        Edit Customer
+
+      </button>
+
+
+      <!-- Cancel Edit -->
+
+      <button
+        *ngIf="editMode"
+        type="button"
+        class="reset-btn"
+        (click)="cancelEdit()"
+        [disabled]="loading">
+
+        Cancel Edit
+
+      </button>
+
+
+      <!-- Update -->
+
+      <button
+        *ngIf="editMode"
+        type="submit"
+        class="submit-btn"
+        [disabled]="loading">
+
+        <span
+          class="button-spinner"
+          *ngIf="loading">
+        </span>
+
+        <span>
+          {{ loading ? 'Updating...' : 'Update Customer' }}
+        </span>
+
+      </button>
+
+    </div>
+
+  </form>
+
+</div>

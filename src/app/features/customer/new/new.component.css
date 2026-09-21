@@ -1,0 +1,509 @@
+
+/* =========================================
+   Page
+========================================= */
+
+.customer-form-page {
+  max-width: 1000px;
+
+  margin: 0 auto;
+
+  padding: 32px;
+
+  color: #18181b;
+}
+
+
+/* =========================================
+   Header
+========================================= */
+
+.page-header {
+  margin-bottom: 28px;
+
+  h1 {
+    margin: 0;
+
+    font-size: 26px;
+
+    font-weight: 600;
+
+    letter-spacing: -0.4px;
+  }
+
+  p {
+    margin: 6px 0 0;
+
+    color: #71717a;
+
+    font-size: 14px;
+  }
+}
+
+
+/* =========================================
+   Server Error
+========================================= */
+
+.server-error {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 20px;
+
+  padding: 12px 14px;
+
+  border: 1px solid #fecaca;
+
+  border-radius: 8px;
+
+  background: #fef2f2;
+
+  color: #b91c1c;
+
+  font-size: 13px;
+}
+
+.error-icon {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #fee2e2;
+
+  color: #b91c1c;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================
+   Form Card
+========================================= */
+
+.form-card {
+  margin-bottom: 20px;
+
+  padding: 24px;
+
+  background: #ffffff;
+
+  border: 1px solid #e4e4e7;
+
+  border-radius: 10px;
+}
+
+
+/* =========================================
+   Card Header
+========================================= */
+
+.card-header {
+  margin-bottom: 22px;
+
+  h2 {
+    margin: 0;
+
+    color: #18181b;
+
+    font-size: 16px;
+
+    font-weight: 600;
+  }
+
+  p {
+    margin: 5px 0 0;
+
+    color: #71717a;
+
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================
+   Form Grid
+========================================= */
+
+.form-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+
+/* =========================================
+   Form Field
+========================================= */
+
+.form-field {
+  display: flex;
+
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+
+/* =========================================
+   Labels
+========================================= */
+
+.form-field label {
+  margin-bottom: 7px;
+
+  color: #3f3f46;
+
+  font-size: 13px;
+
+  font-weight: 500;
+}
+
+.required {
+  color: #dc2626;
+}
+
+
+/* =========================================
+   Inputs
+========================================= */
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  border: 1px solid #e4e4e7;
+
+  border-radius: 7px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #18181b;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.form-field input,
+.form-field select {
+  height: 42px;
+
+  padding: 0 12px;
+}
+
+.form-field textarea {
+  padding: 11px 12px;
+
+  resize: vertical;
+
+  min-height: 100px;
+}
+
+
+/* =========================================
+   Placeholder
+========================================= */
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: #a1a1aa;
+}
+
+
+/* =========================================
+   Focus
+========================================= */
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: #a1a1aa;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(24, 24, 27, 0.04);
+}
+
+
+/* =========================================
+   Invalid Input
+========================================= */
+
+.form-field input.invalid,
+.form-field select.invalid,
+.form-field textarea.invalid {
+  border-color: #ef4444;
+
+  background: #fffafa;
+}
+
+.form-field input.invalid:focus,
+.form-field select.invalid:focus,
+.form-field textarea.invalid:focus {
+  border-color: #ef4444;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(239, 68, 68, 0.08);
+}
+
+
+/* =========================================
+   Validation Message
+========================================= */
+
+.field-error {
+  margin-top: 6px;
+
+  color: #dc2626;
+
+  font-size: 12px;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================
+   Hint
+========================================= */
+
+.field-hint {
+  margin-top: 6px;
+
+  color: #a1a1aa;
+
+  font-size: 11px;
+}
+
+
+/* =========================================
+   Form Actions
+========================================= */
+
+.form-actions {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  margin-top: 24px;
+
+  padding-bottom: 20px;
+}
+
+
+/* =========================================
+   Common Button
+========================================= */
+
+.form-actions button {
+  height: 40px;
+
+  padding: 0 16px;
+
+  border-radius: 7px;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.form-actions button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.form-actions button:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================
+   Cancel
+========================================= */
+
+.cancel-btn {
+  border: 1px solid #e4e4e7;
+
+  background: #ffffff;
+
+  color: #52525b;
+
+  &:hover:not(:disabled) {
+    background: #fafafa;
+
+    border-color: #d4d4d8;
+  }
+}
+
+
+/* =========================================
+   Reset
+========================================= */
+
+.reset-btn {
+  border: 1px solid #e4e4e7;
+
+  background: #ffffff;
+
+  color: #52525b;
+
+  &:hover:not(:disabled) {
+    background: #fafafa;
+
+    border-color: #d4d4d8;
+  }
+}
+
+
+/* =========================================
+   Submit
+========================================= */
+
+.submit-btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  min-width: 140px;
+
+  border: 0;
+
+  background: #18181b;
+
+  color: #ffffff;
+
+  &:hover:not(:disabled) {
+    background: #27272a;
+  }
+}
+
+
+/* =========================================
+   Button Spinner
+========================================= */
+
+.button-spinner {
+  width: 14px;
+  height: 14px;
+
+  border: 2px solid rgba(255, 255, 255, 0.3);
+
+  border-top-color: #ffffff;
+
+  border-radius: 50%;
+
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================
+   Responsive
+========================================= */
+
+@media (max-width: 700px) {
+
+  .customer-form-page {
+    padding: 20px;
+  }
+
+  .form-card {
+    padding: 20px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full-width {
+    grid-column: auto;
+  }
+
+  .form-actions {
+    flex-wrap: wrap;
+
+    justify-content: stretch;
+  }
+
+  .form-actions button {
+    flex: 1;
+  }
+}
+
+
+@media (max-width: 480px) {
+
+  .customer-form-page {
+    padding: 16px;
+  }
+
+  .form-card {
+    padding: 16px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+}
+

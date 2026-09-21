@@ -1,8 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserComponent } from './user.component';
+import { ManageComponent } from './user.component';
+import { UserFormComponent } from './userform/userform.component';
 
-const routes: Routes = [{ path: '', component: UserComponent }];
+const routes: Routes = [
+  { path: '', component: ManageComponent },
+
+  {
+  path: 'edit',
+  component: UserFormComponent
+},
+{
+  path: 'edit/:id',
+  component: UserFormComponent
+}
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

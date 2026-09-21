@@ -1,0 +1,450 @@
+<div class="user-form-page">
+
+  <!-- =========================================
+       Header
+  ========================================== -->
+
+  <div class="page-header">
+
+    <div>
+
+      <h1>
+        {{ isEditMode ? 'User Details' : 'Add User' }}
+      </h1>
+
+      <p>
+
+        {{
+          isEditMode
+            ? (
+                isEditing
+                  ? 'Edit user information'
+                  : 'View user information'
+              )
+            : 'Create a new application user'
+        }}
+
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       Server Error
+  ========================================== -->
+
+  <div
+    class="server-error"
+    *ngIf="serverError">
+
+    <span class="error-icon">
+      !
+    </span>
+
+    <span>
+      {{ serverError }}
+    </span>
+
+  </div>
+
+
+  <!-- =========================================
+       Form
+  ========================================== -->
+
+  <form
+    [formGroup]="userForm"
+    (ngSubmit)="submit()"
+    novalidate>
+
+
+    <!-- =======================================
+         User Information
+    ======================================== -->
+
+    <div class="form-card">
+
+      <div class="card-header">
+
+        <h2>
+          User Information
+        </h2>
+
+        <p>
+          Account information and permissions
+        </p>
+
+      </div>
+
+
+      <div class="form-grid">
+
+
+        <!-- Name -->
+
+        <div class="form-field">
+
+          <label for="name">
+
+            Name
+
+            <span class="required">
+              *
+            </span>
+
+          </label>
+
+
+          <input
+            id="name"
+            type="text"
+            formControlName="name"
+            placeholder="Enter user name"
+            [class.invalid]="
+              hasError('name')
+            "
+          />
+
+
+          <div
+            class="field-error"
+            *ngIf="hasError('name')">
+
+            {{ getErrorMessage('name') }}
+
+          </div>
+
+        </div>
+
+
+        <!-- Email -->
+
+        <div class="form-field">
+
+          <label for="email">
+
+            Email
+
+            <span class="required">
+              *
+            </span>
+
+          </label>
+
+
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="user@example.com"
+            autocomplete="email"
+            [class.invalid]="
+              hasError('email')
+            "
+          />
+
+
+          <div
+            class="field-error"
+            *ngIf="hasError('email')">
+
+            {{ getErrorMessage('email') }}
+
+          </div>
+
+        </div>
+
+
+        <!-- Password -->
+
+        <div
+          class="form-field"
+          *ngIf="!isEditMode">
+
+
+          <label for="password">
+
+            Password
+
+            <span class="required">
+              *
+            </span>
+
+          </label>
+
+
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            placeholder="Enter password"
+            autocomplete="new-password"
+            [class.invalid]="
+              hasError('password')
+            "
+          />
+
+
+          <div
+            class="field-error"
+            *ngIf="hasError('password')">
+
+            {{ getErrorMessage('password') }}
+
+          </div>
+
+
+          <div
+            class="field-hint"
+            *ngIf="
+              !hasError('password')
+            ">
+
+            Password must be at least 6 characters.
+
+          </div>
+
+        </div>
+
+
+        <!-- Role -->
+
+        <div class="form-field">
+
+          <label for="role">
+
+            Role
+
+            <span class="required">
+              *
+            </span>
+
+          </label>
+
+
+          <select
+            id="role"
+            formControlName="role"
+            [class.invalid]="
+              hasError('role')
+            ">
+
+            <option
+              *ngFor="let role of roles"
+              [value]="role">
+
+              {{ role }}
+
+            </option>
+
+          </select>
+
+
+          <div
+            class="field-error"
+            *ngIf="hasError('role')">
+
+            {{ getErrorMessage('role') }}
+
+          </div>
+
+        </div>
+
+
+        <!-- Status -->
+
+        <div class="form-field">
+
+          <label for="status">
+
+            Status
+
+            <span class="required">
+              *
+            </span>
+
+          </label>
+
+
+          <select
+            id="status"
+            formControlName="status"
+            [class.invalid]="
+              hasError('status')
+            ">
+
+            <option
+              *ngFor="let status of statuses"
+              [value]="status">
+
+              {{ status }}
+
+            </option>
+
+          </select>
+
+
+          <div
+            class="field-error"
+            *ngIf="hasError('status')">
+
+            {{ getErrorMessage('status') }}
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================================
+         Actions
+    ========================================== -->
+
+    <div class="form-actions">
+
+
+      <!-- Cancel -->
+
+      <button
+        type="button"
+        class="cancel-btn"
+        (click)="cancel()"
+        [disabled]="loading">
+
+        Back
+
+      </button>
+
+
+      <!-- =======================================
+           Existing User - VIEW MODE
+      ======================================== -->
+
+      <ng-container
+        *ngIf="
+          isEditMode &&
+          !isEditing
+        ">
+
+        <button
+          type="button"
+          class="edit-btn"
+          (click)="enableEdit()"
+          [disabled]="loading">
+
+          Edit User
+
+        </button>
+
+      </ng-container>
+
+
+      <!-- =======================================
+           Existing User - EDIT MODE
+      ======================================== -->
+
+      <ng-container
+        *ngIf="
+          isEditMode &&
+          isEditing
+        ">
+
+        <button
+          type="button"
+          class="reset-btn"
+          (click)="resetForm()"
+          [disabled]="loading">
+
+          Reset
+
+        </button>
+
+
+        <button
+          type="button"
+          class="cancel-btn"
+          (click)="cancelEdit()"
+          [disabled]="loading">
+
+          Cancel Edit
+
+        </button>
+
+
+        <button
+          type="submit"
+          class="submit-btn"
+          [disabled]="loading">
+
+          <span
+            class="button-spinner"
+            *ngIf="loading">
+          </span>
+
+          <span>
+
+            {{
+              loading
+                ? 'Updating...'
+                : 'Update User'
+            }}
+
+          </span>
+
+        </button>
+
+      </ng-container>
+
+
+      <!-- =======================================
+           New User
+      ======================================== -->
+
+      <ng-container
+        *ngIf="!isEditMode">
+
+        <button
+          type="button"
+          class="reset-btn"
+          (click)="resetForm()"
+          [disabled]="loading">
+
+          Reset
+
+        </button>
+
+
+        <button
+          type="submit"
+          class="submit-btn"
+          [disabled]="loading">
+
+          <span
+            class="button-spinner"
+            *ngIf="loading">
+          </span>
+
+          <span>
+
+            {{
+              loading
+                ? 'Creating...'
+                : 'Create User'
+            }}
+
+          </span>
+
+        </button>
+
+      </ng-container>
+
+    </div>
+
+  </form>
+
+</div>

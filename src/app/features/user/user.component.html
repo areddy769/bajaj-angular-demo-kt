@@ -1,1 +1,481 @@
-<p>user works!</p>
+<div class="manage-users-page">
+
+  <!-- =========================================
+       Header
+  ========================================== -->
+
+  <div class="page-header">
+
+    <div>
+
+      <h1>
+        Manage Users
+      </h1>
+
+      <p>
+        View and manage application users
+      </p>
+
+    </div>
+
+
+    <!-- ADMIN ONLY -->
+
+    <button
+      *ngIf="isAdmin"
+      type="button"
+      class="add-user-btn"
+      (click)="addUser()">
+
+      <span class="plus-icon">
+        +
+      </span>
+
+      Add User
+
+    </button>
+
+  </div>
+
+
+  <!-- =========================================
+       Server Error
+  ========================================== -->
+
+  <div
+    class="server-error"
+    *ngIf="serverError">
+
+    <span class="error-icon">
+      !
+    </span>
+
+    <span>
+      {{ serverError }}
+    </span>
+
+  </div>
+
+
+  <!-- =========================================
+       Search Panel
+  ========================================== -->
+
+  <div
+    class="search-card"
+    [formGroup]="searchForm">
+
+
+    <div class="search-header">
+
+      <div>
+
+        <h2>
+          Search Users
+        </h2>
+
+        <p>
+          Search and filter users
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="search-grid">
+
+
+      <!-- Search -->
+
+      <div class="form-field">
+
+        <label for="search">
+          Search
+        </label>
+
+        <input
+          id="search"
+          type="text"
+          formControlName="search"
+          placeholder="Search by name or email"
+          (keyup.enter)="search()"
+        />
+
+      </div>
+
+
+      <!-- Role -->
+
+      <div class="form-field">
+
+        <label for="role">
+          Role
+        </label>
+
+        <select
+          id="role"
+          formControlName="role">
+
+          <option value="">
+            All roles
+          </option>
+
+          <option
+            *ngFor="let role of roles"
+            [value]="role">
+
+            {{ role }}
+
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- Status -->
+
+      <div class="form-field">
+
+        <label for="status">
+          Status
+        </label>
+
+        <select
+          id="status"
+          formControlName="status">
+
+          <option value="">
+            All statuses
+          </option>
+
+          <option
+            *ngFor="let status of statuses"
+            [value]="status">
+
+            {{ status }}
+
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- Actions -->
+
+      <div class="search-actions">
+
+        <button
+          type="button"
+          class="reset-btn"
+          (click)="resetSearch()"
+          [disabled]="loading">
+
+          Reset
+
+        </button>
+
+
+        <button
+          type="button"
+          class="search-btn"
+          (click)="search()"
+          [disabled]="loading">
+
+          Search
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       Users Card
+  ========================================== -->
+
+  <div class="users-card">
+
+
+    <!-- Header -->
+
+    <div class="table-header">
+
+      <div>
+
+        <h2>
+          Users
+        </h2>
+
+        <p
+          *ngIf="pagination">
+
+          {{ pagination.totalItems }}
+          user(s) found
+
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- =======================================
+         Loading
+    ======================================== -->
+
+    <div
+      class="table-loading"
+      *ngIf="loading">
+
+      Loading users...
+
+    </div>
+
+
+    <!-- =======================================
+         Empty
+    ======================================== -->
+
+    <div
+      class="empty-state"
+      *ngIf="
+        !loading &&
+        users.length === 0
+      ">
+
+      <div class="empty-icon">
+        —
+      </div>
+
+      <h3>
+        No users found
+      </h3>
+
+      <p>
+        Try changing your search or filter criteria.
+      </p>
+
+    </div>
+
+
+    <!-- =======================================
+         Table
+    ======================================== -->
+
+    <div
+      class="table-wrapper"
+      *ngIf="
+        !loading &&
+        users.length > 0
+      ">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>
+              Name
+            </th>
+
+            <th>
+              Email
+            </th>
+
+            <th>
+              Role
+            </th>
+
+            <th>
+              Status
+            </th>
+
+            <th>
+              Created
+            </th>
+
+            <th>
+              Action
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr
+            *ngFor="
+              let user of users;
+              trackBy: trackByUserId
+            ">
+
+
+            <!-- Name -->
+
+            <td>
+
+              <div class="user-name">
+
+                {{ user.name }}
+
+              </div>
+
+            </td>
+
+
+            <!-- Email -->
+
+            <td>
+
+              <div class="user-email">
+
+                {{ user.email }}
+
+              </div>
+
+            </td>
+
+
+            <!-- Role -->
+
+            <td>
+
+              <span
+                class="role-badge"
+                [class.admin]="
+                  user.role === 'ADMIN'
+                "
+                [class.user]="
+                  user.role === 'USER'
+                ">
+
+                {{ user.role }}
+
+              </span>
+
+            </td>
+
+
+            <!-- Status -->
+
+            <td>
+
+              <span
+                class="status-badge"
+                [class.active]="
+                  user.status === 'ACTIVE'
+                "
+                [class.inactive]="
+                  user.status === 'INACTIVE'
+                ">
+
+                {{ user.status }}
+
+              </span>
+
+            </td>
+
+
+            <!-- Created -->
+
+            <td>
+
+              {{ formatDate(user.createdAt) }}
+
+            </td>
+
+
+            <!-- Action -->
+
+            <td>
+
+              <button
+                type="button"
+                class="view-btn"
+                (click)="viewUser(user.id)">
+
+                View
+
+              </button>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <!-- =======================================
+         Pagination
+    ======================================== -->
+
+    <div
+      class="pagination"
+      *ngIf="
+        !loading &&
+        pagination &&
+        pagination.totalPages > 1
+      ">
+
+
+      <!-- Previous -->
+
+      <button
+        type="button"
+        class="pagination-btn"
+        (click)="previousPage()"
+        [disabled]="page === 1">
+
+        Previous
+
+      </button>
+
+
+      <!-- Pages -->
+
+      <button
+        *ngFor="let pageNumber of pages"
+        type="button"
+        class="pagination-number"
+        [class.active]="
+          pageNumber === page
+        "
+        (click)="goToPage(pageNumber)">
+
+        {{ pageNumber }}
+
+      </button>
+
+
+      <!-- Next -->
+
+      <button
+        type="button"
+        class="pagination-btn"
+        (click)="nextPage()"
+        [disabled]="
+          page === pagination.totalPages
+        ">
+
+        Next
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

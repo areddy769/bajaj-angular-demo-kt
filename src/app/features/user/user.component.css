@@ -1,0 +1,649 @@
+/* =========================================
+   Page
+========================================= */
+
+.manage-users-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px;
+  color: #18181b;
+}
+
+
+/* =========================================
+   Header
+========================================= */
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 28px;
+}
+
+.page-header h1 {
+  margin: 0;
+
+  font-size: 26px;
+  font-weight: 600;
+
+  letter-spacing: -0.4px;
+}
+
+.page-header p {
+  margin: 6px 0 0;
+
+  color: #71717a;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   Add User
+========================================= */
+
+.add-user-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  height: 40px;
+
+  padding: 0 15px;
+
+  border: 0;
+  border-radius: 7px;
+
+  background: #18181b;
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.add-user-btn:hover {
+  background: #27272a;
+}
+
+.plus-icon {
+  font-size: 17px;
+  line-height: 1;
+}
+
+
+/* =========================================
+   Server Error
+========================================= */
+
+.server-error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 20px;
+  padding: 12px 14px;
+
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+
+  background: #fef2f2;
+
+  color: #b91c1c;
+
+  font-size: 13px;
+}
+
+.error-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #fee2e2;
+
+  color: #b91c1c;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   Search Card
+========================================= */
+
+.search-card {
+  margin-bottom: 20px;
+  padding: 24px;
+
+  background: #ffffff;
+
+  border: 1px solid #e4e4e7;
+
+  border-radius: 10px;
+}
+
+.search-header {
+  margin-bottom: 20px;
+}
+
+.search-header h2 {
+  margin: 0;
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.search-header p {
+  margin: 5px 0 0;
+
+  color: #71717a;
+
+  font-size: 13px;
+}
+
+
+/* =========================================
+   Search Grid
+========================================= */
+
+.search-grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(220px, 2fr)
+    minmax(150px, 1fr)
+    minmax(150px, 1fr)
+    auto;
+
+  gap: 16px;
+
+  align-items: end;
+}
+
+
+/* =========================================
+   Form Field
+========================================= */
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field label {
+  margin-bottom: 7px;
+
+  color: #3f3f46;
+
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.form-field input,
+.form-field select {
+  width: 100%;
+  height: 42px;
+
+  box-sizing: border-box;
+
+  padding: 0 12px;
+
+  border: 1px solid #e4e4e7;
+
+  border-radius: 7px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #18181b;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.form-field input::placeholder {
+  color: #a1a1aa;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  border-color: #a1a1aa;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(24, 24, 27, 0.04);
+}
+
+
+/* =========================================
+   Search Actions
+========================================= */
+
+.search-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.search-actions button {
+  height: 42px;
+
+  padding: 0 16px;
+
+  border-radius: 7px;
+
+  font-family: inherit;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.search-actions button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+
+/* Reset */
+
+.reset-btn {
+  border: 1px solid #e4e4e7;
+
+  background: #ffffff;
+
+  color: #52525b;
+}
+
+.reset-btn:hover:not(:disabled) {
+  background: #fafafa;
+}
+
+
+/* Search */
+
+.search-btn {
+  border: 0;
+
+  background: #18181b;
+
+  color: #ffffff;
+}
+
+.search-btn:hover:not(:disabled) {
+  background: #27272a;
+}
+
+
+/* =========================================
+   Users Card
+========================================= */
+
+.users-card {
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border: 1px solid #e4e4e7;
+
+  border-radius: 10px;
+}
+
+
+/* =========================================
+   Table Header
+========================================= */
+
+.table-header {
+  padding: 20px 24px;
+
+  border-bottom: 1px solid #e4e4e7;
+}
+
+.table-header h2 {
+  margin: 0;
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.table-header p {
+  margin: 5px 0 0;
+
+  color: #71717a;
+
+  font-size: 13px;
+}
+
+
+/* =========================================
+   Table
+========================================= */
+
+.table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  font-size: 13px;
+}
+
+thead {
+  background: #fafafa;
+}
+
+th {
+  padding: 13px 20px;
+
+  border-bottom: 1px solid #e4e4e7;
+
+  color: #71717a;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  text-align: left;
+
+  white-space: nowrap;
+}
+
+td {
+  padding: 15px 20px;
+
+  border-bottom: 1px solid #f4f4f5;
+
+  color: #52525b;
+
+  white-space: nowrap;
+}
+
+tbody tr:hover {
+  background: #fafafa;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+
+/* =========================================
+   User
+========================================= */
+
+.user-name {
+  color: #18181b;
+  font-weight: 500;
+}
+
+.user-email {
+  color: #71717a;
+}
+
+
+/* =========================================
+   Role Badge
+========================================= */
+
+.role-badge,
+.status-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 4px 9px;
+
+  border-radius: 999px;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.role-badge.admin {
+  background: #f4f4f5;
+  color: #18181b;
+}
+
+.role-badge.user {
+  background: #f4f4f5;
+  color: #52525b;
+}
+
+
+/* =========================================
+   Status
+========================================= */
+
+.status-badge.active {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.status-badge.inactive {
+  background: #f4f4f5;
+  color: #71717a;
+}
+
+
+/* =========================================
+   View
+========================================= */
+
+.view-btn {
+  height: 34px;
+
+  padding: 0 12px;
+
+  border: 1px solid #e4e4e7;
+
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  color: #3f3f46;
+
+  font-family: inherit;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.view-btn:hover {
+  background: #fafafa;
+
+  border-color: #d4d4d8;
+}
+
+
+/* =========================================
+   Loading
+========================================= */
+
+.table-loading {
+  padding: 50px;
+
+  text-align: center;
+
+  color: #71717a;
+
+  font-size: 13px;
+}
+
+
+/* =========================================
+   Empty
+========================================= */
+
+.empty-state {
+  padding: 60px 20px;
+
+  text-align: center;
+}
+
+.empty-icon {
+  margin-bottom: 12px;
+
+  color: #a1a1aa;
+
+  font-size: 24px;
+}
+
+.empty-state h3 {
+  margin: 0;
+
+  color: #3f3f46;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.empty-state p {
+  margin: 6px 0 0;
+
+  color: #a1a1aa;
+
+  font-size: 13px;
+}
+
+
+/* =========================================
+   Pagination
+========================================= */
+
+.pagination {
+  display: flex;
+
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 6px;
+
+  padding: 16px 20px;
+
+  border-top: 1px solid #e4e4e7;
+}
+
+.pagination-btn,
+.pagination-number {
+  height: 34px;
+
+  min-width: 34px;
+
+  padding: 0 10px;
+
+  border: 1px solid #e4e4e7;
+
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  color: #52525b;
+
+  font-family: inherit;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.pagination-btn:hover:not(:disabled),
+.pagination-number:hover:not(:disabled) {
+  background: #fafafa;
+}
+
+.pagination-number.active {
+  background: #18181b;
+
+  border-color: #18181b;
+
+  color: #ffffff;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.45;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================
+   Responsive
+========================================= */
+
+@media (max-width: 900px) {
+
+  .search-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .search-actions {
+    justify-content: flex-start;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .manage-users-page {
+    padding: 20px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .add-user-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .search-card {
+    padding: 20px;
+  }
+
+  .search-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .search-actions {
+    width: 100%;
+  }
+
+  .search-actions button {
+    flex: 1;
+  }
+
+  .pagination {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+}

@@ -1,1 +1,483 @@
-<p>customer works!</p>
+
+<div class="customers-page">
+
+  <!-- =========================================
+       Header
+  ========================================== -->
+
+  <div class="page-header">
+
+    <div class="header-content">
+
+      <h1>
+        Customers
+      </h1>
+
+      <p>
+        Manage your customers
+      </p>
+
+    </div>
+
+    <!-- Add Customer -->
+
+    <button
+      type="button"
+      class="add-customer-btn"
+      (click)="addCustomer()">
+
+      <span class="plus-icon">
+        +
+      </span>
+
+      <span>
+        Add Customer
+      </span>
+
+    </button>
+
+  </div>
+
+
+  <!-- =========================================
+       Search
+  ========================================== -->
+
+  <div class="search-box">
+
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2">
+
+      <circle
+        cx="11"
+        cy="11"
+        r="7">
+      </circle>
+
+      <path
+        d="m20 20-4-4">
+      </path>
+
+    </svg>
+
+
+    <input
+      type="text"
+      placeholder="Search customers..."
+      [(ngModel)]="query.search"
+      (keyup.enter)="search()"
+    />
+
+
+    <!-- Search Button -->
+
+    <button
+      type="button"
+      class="search-btn"
+      (click)="search()">
+
+      Search
+
+    </button>
+
+  </div>
+
+
+  <!-- =========================================
+       Filters
+  ========================================== -->
+
+  <div class="filters">
+
+    <!-- Status -->
+
+    <select
+      [(ngModel)]="query.status"
+      (change)="filterChanged()">
+
+      <option value="">
+        All Status
+      </option>
+
+      <option
+        *ngFor="let status of statuses"
+        [value]="status">
+
+        {{ status }}
+
+      </option>
+
+    </select>
+
+
+    <!-- City -->
+
+    <select
+      [(ngModel)]="query.city"
+      (change)="filterChanged()">
+
+      <option value="">
+        All Cities
+      </option>
+
+      <option
+        *ngFor="let city of cities"
+        [value]="city">
+
+        {{ city }}
+
+      </option>
+
+    </select>
+
+
+    <!-- Customer Type -->
+
+    <select
+      [(ngModel)]="query.customerType"
+      (change)="filterChanged()">
+
+      <option value="">
+        All Types
+      </option>
+
+      <option
+        *ngFor="let type of customerTypes"
+        [value]="type">
+
+        {{ type }}
+
+      </option>
+
+    </select>
+
+
+    <!-- Clear -->
+
+    <button
+      *ngIf="
+        query.search ||
+        query.status ||
+        query.city ||
+        query.customerType
+      "
+      type="button"
+      class="clear-btn"
+      (click)="clearFilters()">
+
+      Clear
+
+    </button>
+
+  </div>
+
+
+  <!-- =========================================
+       Table
+  ========================================== -->
+
+  <div class="table-wrapper">
+
+    <table>
+
+      <!-- Table Header -->
+
+      <thead>
+
+        <tr>
+
+          <th>
+            Name
+          </th>
+
+          <th>
+            Email
+          </th>
+
+          <th>
+            City
+          </th>
+
+          <th>
+            Type
+          </th>
+
+          <th>
+            Status
+          </th>
+
+        </tr>
+
+      </thead>
+
+
+      <tbody>
+
+        <!-- ===================================
+             Loading
+        ==================================== -->
+
+        <tr *ngIf="loading">
+
+          <td
+            colspan="5"
+            class="state">
+
+            <div class="loading-container">
+
+              <div class="spinner"></div>
+
+              <span>
+                Loading customers...
+              </span>
+
+            </div>
+
+          </td>
+
+        </tr>
+
+
+        <!-- ===================================
+             Empty
+        ==================================== -->
+
+        <tr
+          *ngIf="
+            !loading &&
+            customers.length === 0
+          ">
+
+          <td
+            colspan="5"
+            class="state">
+
+            <div class="empty-state">
+
+              <div class="empty-icon">
+                👤
+              </div>
+
+              <div class="empty-title">
+                No customers found
+              </div>
+
+              <div class="empty-text">
+                Try changing your search or filters.
+              </div>
+
+            </div>
+
+          </td>
+
+        </tr>
+
+
+        <!-- ===================================
+             Customers
+        ==================================== -->
+
+        <tr
+          *ngFor="
+            let customer of customers;
+            trackBy: trackById
+          "
+          class="customer-row"
+          (click)="openCustomer(customer.id)">
+
+          <!-- Name -->
+
+          <td class="name">
+
+            <div class="customer-name">
+
+              <div class="avatar">
+                
+                {{ customer.firstName.charAt(0)   }}
+
+              </div>
+
+              <div>
+
+                <div class="customer-full-name">
+
+                  {{ customer.firstName }}
+                  {{ customer.lastName }}
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </td>
+
+
+          <!-- Email -->
+
+          <td>
+
+            {{ customer.email }}
+
+          </td>
+
+
+          <!-- City -->
+
+          <td>
+
+            {{ customer.city }}
+
+          </td>
+
+
+          <!-- Type -->
+
+          <td>
+
+            <span class="type">
+
+              {{ customer.customerType }}
+
+            </span>
+
+          </td>
+
+
+          <!-- Status -->
+
+          <td>
+
+            <span
+              class="status"
+              [class.active]="
+                customer.status === 'ACTIVE'
+              "
+              [class.inactive]="
+                customer.status !== 'ACTIVE'
+              ">
+
+              {{ customer.status }}
+
+            </span>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+
+  <!-- =========================================
+       Footer
+  ========================================== -->
+
+  <div
+    class="table-footer"
+    *ngIf="
+      !loading &&
+      pagination.totalItems > 0
+    ">
+
+
+    <!-- Total -->
+
+    <span class="total">
+
+      {{ pagination.totalItems }}
+
+      {{
+        pagination.totalItems === 1
+          ? 'customer'
+          : 'customers'
+      }}
+
+    </span>
+
+
+    <!-- Pagination -->
+
+    <div
+      class="pagination"
+      *ngIf="
+        pagination.totalPages > 1
+      ">
+
+
+      <!-- Previous -->
+
+      <button
+        type="button"
+        class="pagination-arrow"
+        (click)="
+          goToPage(
+            pagination.page - 1
+          )
+        "
+        [disabled]="
+          pagination.page === 1
+        "
+        aria-label="Previous page">
+
+        ‹
+
+      </button>
+
+
+      <!-- Pages -->
+
+      <button
+        type="button"
+        *ngFor="
+          let page of [].constructor(
+            pagination.totalPages
+          );
+          let i = index
+        "
+        [class.current]="
+          pagination.page === i + 1
+        "
+        (click)="
+          goToPage(i + 1)
+        ">
+
+        {{ i + 1 }}
+
+      </button>
+
+
+      <!-- Next -->
+
+      <button
+        type="button"
+        class="pagination-arrow"
+        (click)="
+          goToPage(
+            pagination.page + 1
+          )
+        "
+        [disabled]="
+          pagination.page ===
+          pagination.totalPages
+        "
+        aria-label="Next page">
+
+        ›
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
