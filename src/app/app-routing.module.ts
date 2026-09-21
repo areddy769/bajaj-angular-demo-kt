@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './core/guards/auth.guard';
+import { AdminGuard } from './core/guards/admin.guard';
 
 const routes: Routes = [
   {
@@ -8,6 +10,8 @@ const routes: Routes = [
       import('./layout/layout.component').then(
         (c) => c.LayoutComponent
       ),
+      canActivate:[AuthGuard]
+      ,
     children: [
       {
         path: '',
@@ -37,6 +41,7 @@ const routes: Routes = [
           import('./features/user/user.module').then(
             (m) => m.UserModule
           ),
+          canActivate:[AdminGuard],
       },
     ],
   },
@@ -49,10 +54,10 @@ const routes: Routes = [
       ),
   },
 
-  // {
-  //   path: '**',
-  //   redirectTo: '',
-  // },
+  {
+    path: '**',
+    redirectTo: '',
+  },
 ];
 
 @NgModule({
