@@ -1,9 +1,6 @@
 
 <div class="customers-page">
 
-  <!-- =========================================
-       Header
-  ========================================== -->
 
   <div class="page-header">
 
@@ -19,7 +16,6 @@
 
     </div>
 
-    <!-- Add Customer -->
 
     <button
       type="button"
@@ -39,10 +35,7 @@
   </div>
 
 
-  <!-- =========================================
-       Search
-  ========================================== -->
-
+  
   <div class="search-box">
 
     <svg
@@ -74,7 +67,7 @@
     />
 
 
-    <!-- Search Button -->
+
 
     <button
       type="button"
@@ -87,10 +80,6 @@
 
   </div>
 
-
-  <!-- =========================================
-       Filters
-  ========================================== -->
 
   <div class="filters">
 
@@ -115,8 +104,6 @@
     </select>
 
 
-    <!-- City -->
-
     <select
       [(ngModel)]="query.city"
       (change)="filterChanged()">
@@ -135,8 +122,6 @@
 
     </select>
 
-
-    <!-- Customer Type -->
 
     <select
       [(ngModel)]="query.customerType"
@@ -157,8 +142,6 @@
     </select>
 
 
-    <!-- Clear -->
-
     <button
       *ngIf="
         query.search ||
@@ -177,15 +160,13 @@
   </div>
 
 
-  <!-- =========================================
-       Table
-  ========================================== -->
+  
 
   <div class="table-wrapper">
 
     <table>
 
-      <!-- Table Header -->
+    
 
       <thead>
 
@@ -218,9 +199,7 @@
 
       <tbody>
 
-        <!-- ===================================
-             Loading
-        ==================================== -->
+      
 
         <tr *ngIf="loading">
 
@@ -243,10 +222,7 @@
         </tr>
 
 
-        <!-- ===================================
-             Empty
-        ==================================== -->
-
+     
         <tr
           *ngIf="
             !loading &&
@@ -278,10 +254,7 @@
         </tr>
 
 
-        <!-- ===================================
-             Customers
-        ==================================== -->
-
+     
         <tr
           *ngFor="
             let customer of customers;
@@ -318,7 +291,6 @@
           </td>
 
 
-          <!-- Email -->
 
           <td>
 
@@ -327,7 +299,6 @@
           </td>
 
 
-          <!-- City -->
 
           <td>
 
@@ -336,7 +307,6 @@
           </td>
 
 
-          <!-- Type -->
 
           <td>
 
@@ -349,7 +319,7 @@
           </td>
 
 
-          <!-- Status -->
+          
 
           <td>
 
@@ -377,9 +347,6 @@
   </div>
 
 
-  <!-- =========================================
-       Footer
-  ========================================== -->
 
   <div
     class="table-footer"
@@ -389,7 +356,6 @@
     ">
 
 
-    <!-- Total -->
 
     <span class="total">
 
@@ -404,7 +370,6 @@
     </span>
 
 
-    <!-- Pagination -->
 
     <div
       class="pagination"
@@ -412,8 +377,6 @@
         pagination.totalPages > 1
       ">
 
-
-      <!-- Previous -->
 
       <button
         type="button"
@@ -433,7 +396,6 @@
       </button>
 
 
-      <!-- Pages -->
 
       <button
         type="button"
@@ -455,7 +417,6 @@
       </button>
 
 
-      <!-- Next -->
 
       <button
         type="button"

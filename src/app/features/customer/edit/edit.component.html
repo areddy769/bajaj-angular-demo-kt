@@ -1,8 +1,6 @@
 <div class="customer-form-page">
 
-  <!-- =========================================
-       Header
-  ========================================== -->
+ 
 
   <div class="page-header">
 
@@ -21,9 +19,6 @@
   </div>
 
 
-  <!-- =========================================
-       Server Error
-  ========================================== -->
 
   <div
     class="server-error"
@@ -40,10 +35,6 @@
   </div>
 
 
-  <!-- =========================================
-       Loading
-  ========================================== -->
-
   <div
     class="loading-message"
     *ngIf="loading && !customerForm.value.firstName">
@@ -53,9 +44,6 @@
   </div>
 
 
-  <!-- =========================================
-       Form
-  ========================================== -->
 
   <form
     *ngIf="customerForm"
@@ -63,10 +51,6 @@
     (ngSubmit)="update()"
     novalidate>
 
-
-    <!-- =======================================
-         Personal Information
-    ======================================== -->
 
     <div class="form-card">
 
@@ -118,7 +102,7 @@
         </div>
 
 
-        <!-- Last Name -->
+        
 
         <div class="form-field">
 
@@ -152,7 +136,7 @@
         </div>
 
 
-        <!-- Email -->
+      
 
         <div class="form-field">
 
@@ -187,7 +171,7 @@
         </div>
 
 
-        <!-- Mobile -->
+        
 
         <div class="form-field">
 
@@ -267,7 +251,6 @@
         </div>
 
 
-        <!-- Customer Type -->
 
         <div class="form-field">
 
@@ -300,7 +283,6 @@
         </div>
 
 
-        <!-- Status -->
 
         <div class="form-field">
 
@@ -337,10 +319,6 @@
     </div>
 
 
-    <!-- =======================================
-         Address
-    ======================================== -->
-
     <div class="form-card">
 
       <div class="card-header">
@@ -359,7 +337,7 @@
       <div class="form-grid">
 
 
-        <!-- City -->
+        
 
         <div class="form-field">
 
@@ -393,7 +371,6 @@
         </div>
 
 
-        <!-- State -->
 
         <div class="form-field">
 
@@ -427,7 +404,7 @@
         </div>
 
 
-        <!-- Pincode -->
+        
 
         <div class="form-field">
 
@@ -463,7 +440,7 @@
         </div>
 
 
-        <!-- Address -->
+        
 
         <div class="form-field full-width">
 
@@ -501,9 +478,6 @@
     </div>
 
 
-    <!-- =======================================
-         Actions
-    ======================================== -->
 
     <div class="form-actions">
 
@@ -521,8 +495,6 @@
       </button>
 
 
-      <!-- Delete - ADMIN ONLY -->
-
       <button
         *ngIf="isAdmin && !editMode"
         type="button"
@@ -535,7 +507,7 @@
       </button>
 
 
-      <!-- Edit -->
+    
 
       <button
         *ngIf="!editMode"
@@ -549,8 +521,6 @@
       </button>
 
 
-      <!-- Cancel Edit -->
-
       <button
         *ngIf="editMode"
         type="button"
@@ -563,7 +533,6 @@
       </button>
 
 
-      <!-- Update -->
 
       <button
         *ngIf="editMode"

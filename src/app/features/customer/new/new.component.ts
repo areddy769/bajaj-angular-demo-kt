@@ -147,17 +147,12 @@ export class NewComponent implements OnInit {
   }
 
 
-  /**
-   * Easy access to form controls
-   */
+  
   get f() {
     return this.customerForm.controls;
   }
 
 
-  /**
-   * Check whether a field should show an error
-   */
   hasError(field: string): boolean {
 
     const control = this.customerForm.get(field);
@@ -170,9 +165,6 @@ export class NewComponent implements OnInit {
   }
 
 
-  /**
-   * Get validation message for a field
-   */
   getErrorMessage(field: string): string {
 
     const control = this.customerForm.get(field);
@@ -239,19 +231,12 @@ export class NewComponent implements OnInit {
   }
 
 
-  /**
-   * Submit customer
-   */
   submit(): void {
 
     this.submitted = true;
 
     this.serverError = '';
 
-    /*
-     * Mark all fields as touched so that
-     * validation messages become visible.
-     */
     this.customerForm.markAllAsTouched();
 
     if (this.customerForm.invalid) {
@@ -279,9 +264,6 @@ export class NewComponent implements OnInit {
 
         this.loading = false;
 
-        /*
-         * Return to customers list
-         */
         this.router.navigate([
           '/customers'
         ]);
@@ -303,23 +285,6 @@ export class NewComponent implements OnInit {
   }
 
 
-  /**
-   * Handle backend validation response
-   *
-   * Expected:
-   *
-   * {
-   *   success: false,
-   *   message: "Validation failed",
-   *   errors: [
-   *     {
-   *       field: "email",
-   *       message: "Email already exists"
-   *     }
-
-  /**
-   * Cancel
-   */
   cancel(): void {
 
     this.router.navigate([
@@ -328,9 +293,7 @@ export class NewComponent implements OnInit {
   }
 
 
-  /**
-   * Reset form
-   */
+  
   resetForm(): void {
 
     this.submitted = false;

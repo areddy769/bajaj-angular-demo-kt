@@ -23,18 +23,14 @@ export class AdminGuard implements CanActivate {
     state: RouterStateSnapshot
   ): boolean {
 
-    /*
-     * Check whether current user is ADMIN
-     */
+    
     if (
       this.authService.hasRole('ADMIN')
     ) {
       return true;
     }
 
-    /*
-     * User is not ADMIN
-     */
+   
     this.router.navigate([
       '/dashboard'
     ]);

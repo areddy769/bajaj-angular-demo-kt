@@ -24,25 +24,17 @@ import { UserService } from 'src/app/core/services/user/user.service';
 })
 export class ManageComponent implements OnInit {
 
-  /* =========================================
-     Data
-  ========================================== */
+
 
   users: User[] = [];
 
   pagination!: Pagination;
 
 
-  /* =========================================
-     Search
-  ========================================== */
 
   searchForm!: FormGroup;
 
 
-  /* =========================================
-     Filters
-  ========================================== */
 
   roles: UserRole[] = [
     'ADMIN',
@@ -55,18 +47,11 @@ export class ManageComponent implements OnInit {
   ];
 
 
-  /* =========================================
-     Pagination
-  ========================================== */
 
   page = 1;
 
   limit = 10;
 
-
-  /* =========================================
-     State
-  ========================================== */
 
   loading = false;
 
@@ -87,30 +72,21 @@ export class ManageComponent implements OnInit {
 
   ngOnInit(): void {
 
-    /*
-     * Check whether current
-     * logged-in user is ADMIN.
-     */
+    
+     
     this.isAdmin =
       this.authService.hasRole('ADMIN');
 
 
-    /*
-     * Create search form.
-     */
+    
     this.createSearchForm();
 
 
-    /*
-     * Initial API call.
-     */
+   
     this.loadUsers();
   }
 
 
-  /* =========================================
-     Search Form
-  ========================================== */
 
   private createSearchForm(): void {
 
@@ -126,9 +102,6 @@ export class ManageComponent implements OnInit {
   }
 
 
-  /* =========================================
-     Load Users
-  ========================================== */
 
   loadUsers(): void {
 
@@ -240,10 +213,6 @@ export class ManageComponent implements OnInit {
   }
 
 
-  /* =========================================
-     Reset
-  ========================================== */
-
   resetSearch(): void {
 
     this.searchForm.reset({
@@ -262,10 +231,6 @@ export class ManageComponent implements OnInit {
     this.loadUsers();
   }
 
-
-  /* =========================================
-     Pagination
-  ========================================== */
 
   goToPage(page: number): void {
 
@@ -310,9 +275,6 @@ export class ManageComponent implements OnInit {
   }
 
 
-  /* =========================================
-     Page Numbers
-  ========================================== */
 
   get pages(): number[] {
 
@@ -332,9 +294,6 @@ export class ManageComponent implements OnInit {
   }
 
 
-  /* =========================================
-     Add User
-  ========================================== */
 
   addUser(): void {
 
@@ -349,10 +308,6 @@ export class ManageComponent implements OnInit {
     ]);
   }
 
-
-  /* =========================================
-     View User
-  ========================================== */
 
   viewUser(id: number): void {
 
@@ -370,9 +325,6 @@ export class ManageComponent implements OnInit {
   }
 
 
-  /* =========================================
-     Track By
-  ========================================== */
 
   trackByUserId(
     index: number,
@@ -381,11 +333,6 @@ export class ManageComponent implements OnInit {
 
     return user.id;
   }
-
-
-  /* =========================================
-     Date
-  ========================================== */
 
   formatDate(
     date: string

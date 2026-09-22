@@ -26,16 +26,9 @@ import { UserService } from 'src/app/core/services/user/user.service';
 })
 export class UserFormComponent implements OnInit {
 
-  /* =========================================
-     Form
-  ========================================== */
-
   userForm!: FormGroup;
 
 
-  /* =========================================
-     Mode
-  ========================================== */
 
   isEditMode = false;
 
@@ -44,10 +37,6 @@ export class UserFormComponent implements OnInit {
   userId!: number;
 
 
-  /* =========================================
-     State
-  ========================================== */
-
   loading = false;
 
   submitted = false;
@@ -55,9 +44,6 @@ export class UserFormComponent implements OnInit {
   serverError = '';
 
 
-  /* =========================================
-     Options
-  ========================================== */
 
   roles: UserRole[] = [
     'ADMIN',
@@ -84,24 +70,13 @@ export class UserFormComponent implements OnInit {
 
     this.createForm();
 
-    /*
-     * Check whether this is:
-     *
-     * /users/new
-     *
-     * OR
-     *
-     * /users/:id
-     */
     const id =
       this.route.snapshot.paramMap.get('id');
 
 
     if (id) {
 
-      /*
-       * Existing user
-       */
+      
       this.isEditMode = true;
 
       this.userId = Number(id);
@@ -110,9 +85,6 @@ export class UserFormComponent implements OnInit {
 
     } else {
 
-      /*
-       * New user
-       */
       this.isEditMode = false;
 
       this.isEditing = true;
@@ -138,9 +110,6 @@ export class UserFormComponent implements OnInit {
 
 
 
-  /* =========================================
-     Create Form
-  ========================================== */
 
   private createForm(): void {
 
@@ -192,18 +161,11 @@ export class UserFormComponent implements OnInit {
   }
 
 
-  /* =========================================
-     Form Controls
-  ========================================== */
-
   get f() {
     return this.userForm.controls;
   }
 
 
-  /* =========================================
-     Load User
-  ========================================== */
 
   private loadUser(id: number): void {
 
@@ -230,15 +192,7 @@ export class UserFormComponent implements OnInit {
           );
 
 
-          /*
-           * Populate form.
-           *
-           * Notice:
-           *
-           * User does NOT contain password.
-           *
-           * Therefore we don't patch password.
-           */
+          
           this.userForm.patchValue({
 
             name: user.name,
@@ -252,10 +206,6 @@ export class UserFormComponent implements OnInit {
           });
 
 
-          /*
-           * Password isn't needed
-           * when editing.
-           */
           this.userForm
             .get('password')
             ?.clearValidators();
@@ -265,10 +215,7 @@ export class UserFormComponent implements OnInit {
             ?.updateValueAndValidity();
 
 
-          /*
-           * Existing user starts
-           * in VIEW mode.
-           */
+          
           this.isEditing = false;
 
           this.userForm.disable();
@@ -310,10 +257,6 @@ export class UserFormComponent implements OnInit {
   }
 
 
-  /* =========================================
-     Has Error
-  ========================================== */
-
   hasError(
     field: string
   ): boolean {
@@ -333,10 +276,6 @@ export class UserFormComponent implements OnInit {
 
   }
 
-
-  /* =========================================
-     Error Message
-  ========================================== */
 
   getErrorMessage(
     field: string
@@ -416,9 +355,6 @@ export class UserFormComponent implements OnInit {
   }
 
 
-  /* =========================================
-     Enable Edit
-  ========================================== */
 
   enableEdit(): void {
 
@@ -432,10 +368,6 @@ export class UserFormComponent implements OnInit {
     this.userForm.enable();
 
 
-    /*
-     * Password should remain optional
-     * during update.
-     */
     const password =
       this.userForm.get('password');
 
@@ -447,10 +379,6 @@ export class UserFormComponent implements OnInit {
   }
 
 
-  /* =========================================
-     Cancel Edit
-  ========================================== */
-
   cancelEdit(): void {
 
     if (!this.isEditMode) {
@@ -458,21 +386,11 @@ export class UserFormComponent implements OnInit {
       return;
     }
 
-
-    /*
-     * Reload original user data.
-     *
-     * This is safer than trying to
-     * manually restore every field.
-     */
     this.loadUser(this.userId);
 
   }
 
 
-  /* =========================================
-     Submit
-  ========================================== */
 
   submit(): void {
 
@@ -481,9 +399,7 @@ export class UserFormComponent implements OnInit {
     this.serverError = '';
 
 
-    /*
-     * Show validation messages.
-     */
+    
     this.userForm.markAllAsTouched();
 
 
@@ -499,15 +415,6 @@ export class UserFormComponent implements OnInit {
     this.load.show();
 
 
-    /*
-     * IMPORTANT:
-     *
-     * getRawValue() is used because
-     * the form can be disabled in VIEW mode.
-     *
-     * At this point during submit,
-     * it will normally be enabled.
-     */
     const formValue =
       this.userForm.getRawValue();
 
@@ -525,9 +432,6 @@ export class UserFormComponent implements OnInit {
   }
 
 
-  /* =========================================
-     Create User
-  ========================================== */
 
   private createUser(
     formValue: UserFormValue
@@ -555,9 +459,6 @@ export class UserFormComponent implements OnInit {
           );
 
 
-          /*
-           * Go back to users list.
-           */
 this.router.navigate(['/users'], {
   replaceUrl: true
 });
@@ -577,18 +478,11 @@ this.router.navigate(['/users'], {
   }
 
 
-  /* =========================================
-     Update User
-  ========================================== */
-
   private updateUser(
     formValue: UserFormValue
   ): void {
 
-    /*
-     * Don't send password when
-     * it wasn't entered.
-     */
+    
     const payload: Partial<UserFormValue> = {
 
       name: formValue.name,
@@ -602,10 +496,6 @@ this.router.navigate(['/users'], {
     };
 
 
-    /*
-     * If password has been entered,
-     * include it.
-     */
     if (
       formValue.password &&
       formValue.password.trim()
@@ -651,9 +541,7 @@ this.router.navigate(['/users'], {
           this.userForm.disable();
 
 
-          /*
-           * Clear password.
-           */
+        
           this.userForm
             .get('password')
             ?.reset('');
@@ -673,10 +561,6 @@ this.router.navigate(['/users'], {
 
   }
 
-
-  /* =========================================
-     Error Handler
-  ========================================== */
 
   private handleError(
     error: any
@@ -755,10 +639,6 @@ this.router.navigate(['/users'], {
   }
 
 
-  /* =========================================
-     Cancel
-  ========================================== */
-
   cancel(): void {
 
     this.router.navigate([
@@ -768,9 +648,6 @@ this.router.navigate(['/users'], {
   }
 
 
-  /* =========================================
-     Reset
-  ========================================== */
 
   resetForm(): void {
 
@@ -788,9 +665,7 @@ this.router.navigate(['/users'], {
     }
 
 
-    /*
-     * New user.
-     */
+    
     this.submitted = false;
 
     this.serverError = '';

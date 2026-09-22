@@ -1,8 +1,6 @@
 <div class="manage-users-page">
 
-  <!-- =========================================
-       Header
-  ========================================== -->
+  
 
   <div class="page-header">
 
@@ -19,7 +17,6 @@
     </div>
 
 
-    <!-- ADMIN ONLY -->
 
     <button
       *ngIf="isAdmin"
@@ -38,9 +35,6 @@
   </div>
 
 
-  <!-- =========================================
-       Server Error
-  ========================================== -->
 
   <div
     class="server-error"
@@ -56,10 +50,6 @@
 
   </div>
 
-
-  <!-- =========================================
-       Search Panel
-  ========================================== -->
 
   <div
     class="search-card"
@@ -104,9 +94,6 @@
 
       </div>
 
-
-      <!-- Role -->
-
       <div class="form-field">
 
         <label for="role">
@@ -132,9 +119,6 @@
         </select>
 
       </div>
-
-
-      <!-- Status -->
 
       <div class="form-field">
 
@@ -162,8 +146,6 @@
 
       </div>
 
-
-      <!-- Actions -->
 
       <div class="search-actions">
 
@@ -195,14 +177,10 @@
   </div>
 
 
-  <!-- =========================================
-       Users Card
-  ========================================== -->
 
   <div class="users-card">
 
 
-    <!-- Header -->
 
     <div class="table-header">
 
@@ -225,9 +203,6 @@
     </div>
 
 
-    <!-- =======================================
-         Loading
-    ======================================== -->
 
     <div
       class="table-loading"
@@ -237,10 +212,6 @@
 
     </div>
 
-
-    <!-- =======================================
-         Empty
-    ======================================== -->
 
     <div
       class="empty-state"
@@ -264,9 +235,6 @@
     </div>
 
 
-    <!-- =======================================
-         Table
-    ======================================== -->
 
     <div
       class="table-wrapper"
@@ -345,8 +313,6 @@
             </td>
 
 
-            <!-- Role -->
-
             <td>
 
               <span
@@ -364,8 +330,6 @@
 
             </td>
 
-
-            <!-- Status -->
 
             <td>
 
@@ -385,8 +349,6 @@
             </td>
 
 
-            <!-- Created -->
-
             <td>
 
               {{ formatDate(user.createdAt) }}
@@ -394,7 +356,6 @@
             </td>
 
 
-            <!-- Action -->
 
             <td>
 
@@ -418,9 +379,6 @@
     </div>
 
 
-    <!-- =======================================
-         Pagination
-    ======================================== -->
 
     <div
       class="pagination"
@@ -431,7 +389,6 @@
       ">
 
 
-      <!-- Previous -->
 
       <button
         type="button"
@@ -443,8 +400,6 @@
 
       </button>
 
-
-      <!-- Pages -->
 
       <button
         *ngFor="let pageNumber of pages"
@@ -460,7 +415,7 @@
       </button>
 
 
-      <!-- Next -->
+     
 
       <button
         type="button"
